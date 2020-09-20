@@ -5,7 +5,8 @@ public class DictionaryManagement {
     
     static Dictionary dictionary = new Dictionary();
     static DictionaryCommandLine command = new DictionaryCommandLine();
-
+    
+    //Load words from file
     static void insertFromFile(String file_name) {
         try {
             File file = new File(file_name);
