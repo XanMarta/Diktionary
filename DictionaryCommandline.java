@@ -17,10 +17,10 @@ public class DictionaryCommandLine {
         }
         System.out.println("|  Vietnamese");
         // Print content
-        for (int i = 1; i <= dictionary.word.size(); i++) {
+        for (int i = 1; i <= dictionary.wordList.size(); i++) {
             String no = i + "";
-            String target = ((Word)dictionary.word.get(i - 1)).word_target;
-            String explain = ((Word)dictionary.word.get(i - 1)).word_explain;
+            String target = dictionary.wordList.get(i - 1);
+            String explain = dictionary.word.get(target).word_explain;
 
             System.out.print(no);
             for (int j = 1; j <= noSpace - no.length(); j++) {
@@ -48,6 +48,7 @@ public class DictionaryCommandLine {
             String explain = scan.nextLine();
             dictionary.addWord(target, explain);
         }
+        scan.close();
     }
 
     public void dictionaryBasic(Dictionary dictionary) {
