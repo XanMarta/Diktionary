@@ -1,4 +1,6 @@
-public class DictionaryCommandline {
+import java.util.*;
+
+public class DictionaryCommandLine {
     
     final int noSpace = 4;
     final int targetSpace = 25;
@@ -30,6 +32,27 @@ public class DictionaryCommandline {
             }
             System.out.println("|" + explain);
         }
+    }
+
+    public void insertFromCommandline(Dictionary dictionary) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Input the amount of word: ");
+        int wordAmount = scan.nextInt();
+        System.out.println();
+        scan.nextLine();
+
+        for (int i = 1; i <= wordAmount; i++) {
+            System.out.print("Input " + i + " target : ");
+            String target = scan.nextLine();
+            System.out.print("Input " + i + " explain: ");
+            String explain = scan.nextLine();
+            dictionary.addWord(target, explain);
+        }
+    }
+
+    public void dictionaryBasic(Dictionary dictionary) {
+        insertFromCommandline(dictionary);
+        showAllWords(dictionary);
     }
 
 }
