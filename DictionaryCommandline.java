@@ -4,8 +4,15 @@ public class DictionaryCommandLine {
     
     final int noSpace = 4;
     final int targetSpace = 25;
+    DictionaryManagement manager = null;
 
-    public void showAllWords(Dictionary dictionary) {
+    public DictionaryCommandLine(DictionaryManagement manager) {
+        this.manager = manager;
+    }
+
+    public void showAllWords() {
+        Dictionary dictionary = manager.dictionary;
+        System.out.println("-- Show all words: --");
         // Print header
         System.out.print("No");
         for (int i = 1; i <= noSpace - 2; i++) {
@@ -34,26 +41,16 @@ public class DictionaryCommandLine {
         }
     }
 
-    public void insertFromCommandline(Dictionary dictionary) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Input the amount of word: ");
-        int wordAmount = scan.nextInt();
-        System.out.println();
-        scan.nextLine();
 
-        for (int i = 1; i <= wordAmount; i++) {
-            System.out.print("Input " + i + " target : ");
-            String target = scan.nextLine();
-            System.out.print("Input " + i + " explain: ");
-            String explain = scan.nextLine();
-            dictionary.addWord(target, explain);
-        }
-        scan.close();
+    public void dictionaryBasic() {
+        manager.insertFromCommandline();
+        showAllWords();
     }
 
-    public void dictionaryBasic(Dictionary dictionary) {
-        insertFromCommandline(dictionary);
-        showAllWords(dictionary);
+    public void dictionaryAdvanced() {
+        manager.insertFromFile();
+        showAllWords();
+        manager.dictionaryLookup();
     }
 
 }
