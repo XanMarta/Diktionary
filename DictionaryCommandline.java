@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class DictionaryCommandLine {
     
@@ -12,7 +11,7 @@ public class DictionaryCommandLine {
 
     public void showAllWords() {
         Dictionary dictionary = manager.dictionary;
-        System.out.println("-- Show all words: --");
+        System.out.println("    -- Show all words: --");
         // Print header
         System.out.print("No");
         for (int i = 1; i <= noSpace - 2; i++) {
@@ -39,6 +38,7 @@ public class DictionaryCommandLine {
             }
             System.out.println("|" + explain);
         }
+        System.out.println();
     }
 
 

@@ -1,4 +1,3 @@
-gold | vang
-silver | bac
-table | cai ban
-bank | ngan hang
+daniel | social
+don | donkey
+read | file
