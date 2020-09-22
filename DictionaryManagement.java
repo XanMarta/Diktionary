@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
 
 public class DictionaryManagement {
@@ -42,6 +42,7 @@ public class DictionaryManagement {
             System.out.println("Can't read file: " + sourceFile);
         }
         System.out.println();
+        dictionarySort();
     }
 
     public void dictionaryLookup() {
@@ -87,10 +88,17 @@ public class DictionaryManagement {
             dictionary.addWord(target, explain);
         }
         System.out.println();
+        dictionarySort();
     }
 
     public void dictionaryExportToFile() {
         try {
+            System.out.print("Input y to export dictionary to file: ");
+            String temp = Console.scan.nextLine();
+            if (!(temp.equals("y") || temp.equals("Y"))) {
+                return;
+            }
+
             System.out.println("    -- Start writing --");
             FileWriter writer = new FileWriter(sourceFile);
             for (String target : dictionary.wordList) {
@@ -102,6 +110,10 @@ public class DictionaryManagement {
             System.out.println("Cannot write to file");
         }
         System.out.println();
+    }
+
+    public void dictionarySort() {
+        Collections.sort(dictionary.wordList);
     }
 
 }
