@@ -54,7 +54,7 @@ public class DictionaryManagement {
         } else {
             //System.out.println("Your word is not in dictionary yet");
             for (int i = 0; i < dictionary.wordList.size(); ++i) {
-                if (dictionary.wordList.elementAt(i).contains(target)) {
+                if (dictionary.wordList.elementAt(i).contains(target.toUpperCase()) || dictionary.wordList.elementAt(i).contains(target.toLowerCase())) {
                     System.out.println(dictionary.wordList.get(i));
                 }
                 else {
