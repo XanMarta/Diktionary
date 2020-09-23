@@ -54,10 +54,11 @@ public class DictionaryManagement {
         } else {
             //System.out.println("Your word is not in dictionary yet");
             for (int i = 0; i < dictionary.wordList.size(); ++i) {
-                if (dictionary.wordList.elementAt(i).contains(target.toUpperCase()) || dictionary.wordList.elementAt(i).contains(target.toLowerCase())) {
+                if (dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toLowerCase())
+                || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toUpperCase())
+                || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target)) {
                     System.out.println(dictionary.wordList.get(i));
-                }
-                else {
+                } else {
                     continue;
                 }
             }
