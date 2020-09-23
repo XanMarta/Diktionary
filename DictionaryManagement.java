@@ -55,13 +55,14 @@ public class DictionaryManagement {
             //System.out.println("Your word is not in dictionary yet");
             for (int i = 0; i < dictionary.wordList.size(); ++i) {
                 if (dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toLowerCase())
-                || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toUpperCase())
-                || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target)) {
+                        || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toUpperCase())
+                        || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target)) {
                     System.out.println(dictionary.wordList.get(i));
                 } else {
                     continue;
                 }
             }
+            System.out.println("Your word is not in dictionary yet");
         }
         System.out.println();
     }
