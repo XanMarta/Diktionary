@@ -52,7 +52,15 @@ public class DictionaryManagement {
         if (dictionary.word.containsKey(target)) {
             System.out.println("Meaning: " + dictionary.word.get(target).word_explain);
         } else {
-            System.out.println("Your word is not in dictionary yet");
+            //System.out.println("Your word is not in dictionary yet");
+            for (int i = 0; i < dictionary.wordList.size(); ++i) {
+                if (dictionary.wordList.elementAt(i).contains(target)) {
+                    System.out.println(dictionary.wordList.get(i));
+                }
+                else {
+                    continue;
+                }
+            }
         }
         System.out.println();
     }
