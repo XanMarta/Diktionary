@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Dictionary {
-
+    // Of course this is Dictionary class
     public Vector<String> wordList = new Vector<String>(10, 10);
     public HashMap<String, Word> word = new HashMap<String, Word>();
 
