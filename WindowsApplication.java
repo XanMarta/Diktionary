@@ -1,4 +1,6 @@
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -12,27 +14,41 @@ public class WindowsApplication {
         // Window
         frame = new JFrame("DIKTIONARY");
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        frame.setLayout(null);
-        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
 
-        // Background Panel
+        // Ground Panel
         JPanel groundPanel = new JPanel();
+        groundPanel.setLayout(new BorderLayout());
         groundPanel.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-        groundPanel.setBackground(Color.cyan);
         frame.add(groundPanel);
 
-        // Left Panel: Explain words
+        // Ground Panel / Left Panel
         JPanel leftPanel = new JPanel();
-        leftPanel.setBounds(0, 0, 768, WINDOW_HEIGHT);
-        leftPanel.setBackground(Color.white);
-        groundPanel.add(leftPanel);
+        leftPanel.setPreferredSize(new Dimension(768, WINDOW_HEIGHT));
+        leftPanel.setBackground(new Color(230, 102, 132));
+        groundPanel.add(leftPanel, BorderLayout.WEST);
 
-        // Right Panel: Search words
+        // Ground Panel / Right Panel
         JPanel rightPanel = new JPanel();
-        rightPanel.setBounds(768, 0, 256, WINDOW_HEIGHT);
-        rightPanel.setBackground(Color.blue);
-        groundPanel.add(rightPanel);
+        rightPanel.setLayout(new BorderLayout());
+        rightPanel.setPreferredSize(new Dimension(256, WINDOW_HEIGHT));
+        rightPanel.setBackground(new Color(235, 145, 187));
+        groundPanel.add(rightPanel, BorderLayout.EAST);
+
+        // Ground Panel / Right Panel / Input Panel
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BorderLayout());
+        inputPanel.setPreferredSize(new Dimension(100, 50));
+        rightPanel.add(inputPanel, BorderLayout.NORTH);
+
+        // Ground Panel / Right Panel / Input Panel / Text Input
+        JTextField textInput = new JTextField();
+        inputPanel.add(textInput, BorderLayout.CENTER);
+
+        // Ground Panel / Right Panel / Choose Panel
+
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
