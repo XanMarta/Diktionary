@@ -20,21 +20,28 @@ public class WindowsApplication {
         // Ground Panel
         JPanel groundPanel = new JPanel();
         groundPanel.setLayout(new BorderLayout());
-        groundPanel.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-        frame.add(groundPanel);
+        groundPanel.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        frame.add(groundPanel, BorderLayout.CENTER);
+
+        // Ground Panel / Control Panel
+        JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new FlowLayout());
+
+        GridBagConstraints c = new GridBagConstraints();
 
         // Ground Panel / Left Panel
         JPanel leftPanel = new JPanel();
-        leftPanel.setPreferredSize(new Dimension(768, WINDOW_HEIGHT));
+        leftPanel.setSize(768, WINDOW_HEIGHT);
         leftPanel.setBackground(new Color(230, 102, 132));
-        groundPanel.add(leftPanel, BorderLayout.WEST);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        controlPanel.add(leftPanel, c);
 
         // Ground Panel / Right Panel
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BorderLayout());
         rightPanel.setPreferredSize(new Dimension(256, WINDOW_HEIGHT));
         rightPanel.setBackground(new Color(235, 145, 187));
-        groundPanel.add(rightPanel, BorderLayout.EAST);
+        controlPanel.add(rightPanel, c);
 
         // Ground Panel / Right Panel / Input Panel
         JPanel inputPanel = new JPanel();

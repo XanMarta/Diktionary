@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WindowsApp">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="80" y="51" width="1112" height="841"/>
+    </constraints>
+    <properties>
+      <preferredSize width="1024" height="768"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="99ef7" binding="leftPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-1677692"/>
+          <font name="Source Code Pro" size="22"/>
+          <preferredSize width="768" height="768"/>
+        </properties>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="e0c66" binding="rightPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-1338949"/>
+          <preferredSize width="256" height="768"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1a6ef" class="javax.swing.JTextField" binding="textInput">
+            <constraints border-constraint="North"/>
+            <properties>
+              <background color="-1114881"/>
+              <font name="Lucida Sans Typewriter" size="26" style="0"/>
+              <preferredSize width="32" height="100"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
