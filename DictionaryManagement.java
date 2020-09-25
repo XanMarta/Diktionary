@@ -52,17 +52,16 @@ public class DictionaryManagement {
         if (dictionary.word.containsKey(target)) {
             System.out.println("Meaning: " + dictionary.word.get(target).word_explain);
         } else {
-            //System.out.println("Your word is not in dictionary yet");
-            for (int i = 0; i < dictionary.wordList.size(); ++i) {
-                if (dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toLowerCase())
-                        || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target.toUpperCase())
-                        || dictionary.wordList.elementAt(i).substring(0, target.length()).equals(target)) {
-                    System.out.println(dictionary.wordList.get(i));
-                } else {
-                    continue;
+            boolean found = false;
+            for (String key : dictionary.word.keySet()) {
+                if (key.contains(target.substring(0, target.length()).toLowerCase())) {
+                    System.out.println(key);
+                    found = true;
                 }
             }
-            System.out.println("Your word is not in dictionary yet");
+            if (found == false) {
+                System.out.println("Your word is not in dictionary yet");
+            }
         }
         System.out.println();
     }
