@@ -2,14 +2,15 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WindowsApp">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="80" y="51" width="1112" height="841"/>
+      <xy x="1" y="3" width="1112" height="841"/>
     </constraints>
     <properties>
+      <minimumSize width="1024" height="768"/>
       <preferredSize width="1024" height="768"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="99ef7" binding="leftPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="99ef7" binding="leftPanel" layout-manager="GridBagLayout">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -20,11 +21,64 @@
           <preferredSize width="768" height="768"/>
         </properties>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="90667" class="javax.swing.JLabel" binding="wordLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <background color="-2819"/>
+              <font name="Calisto MT" size="28"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <opaque value="true"/>
+              <preferredSize width="200" height="32"/>
+              <text value="WORD"/>
+            </properties>
+          </component>
+          <scrollpane id="caeb2" binding="contentPanel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <minimumSize width="768" height="700"/>
+              <preferredSize width="768" height="700"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </scrollpane>
+          <tabbedpane id="85c3c" binding="tabbedPane1" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="200" height="200"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <minimumSize width="768" height="30"/>
+              <preferredSize width="768" height="30"/>
+              <tabPlacement value="2"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="fb8b9" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <tabbedpane title="Untitled"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
+          </tabbedpane>
+        </children>
       </grid>
-      <grid id="e0c66" binding="rightPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="e0c66" binding="rightPanel" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -33,12 +87,46 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="1a6ef" class="javax.swing.JTextField" binding="textInput">
-            <constraints border-constraint="North"/>
+          <vspacer id="af3b2">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+          </vspacer>
+          <component id="5c2b9" class="javax.swing.JList" binding="list1" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
             <properties>
-              <background color="-1114881"/>
-              <font name="Lucida Sans Typewriter" size="26" style="0"/>
-              <preferredSize width="32" height="100"/>
+              <minimumSize width="256" height="650"/>
+            </properties>
+          </component>
+          <grid id="7400c" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <minimumSize width="256" height="38"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="849b4" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-1049089"/>
+              <horizontalAlignment value="10"/>
+              <minimumSize width="300" height="80"/>
+              <preferredSize width="300" height="30"/>
             </properties>
           </component>
         </children>

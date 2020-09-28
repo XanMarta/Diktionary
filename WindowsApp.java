@@ -1,12 +1,37 @@
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 
 public class WindowsApp {
     private JPanel mainPanel;
     private JPanel leftPanel;
     private JPanel rightPanel;
-    private JTextField textInput;
+    private JLabel wordLabel;
+    private JScrollPane contentPanel;
+    private JTextField textField1;
+    private JList list1;
+    private JTabbedPane tabbedPane1;
+
+
+    public WindowsApp() {
+        textField1.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                changeSearchWord();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                changeSearchWord();
+            }
+            public void changedUpdate(DocumentEvent e) {}
+        });
+    }
+
+    public void changeSearchWord() {
+        System.out.println("Text change: " + textField1.getText());
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("WindowsApp");
