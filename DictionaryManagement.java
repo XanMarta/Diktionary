@@ -135,6 +135,11 @@ public class DictionaryManagement {
         System.out.println();
     }
 
+    public Vector<String> getWordHint(String word) {
+//        Vector<String> wordHint = new Vector<>();
+        return dictionary.wordList;
+    }
+
     public void dictionarySort() {
         Collections.sort(dictionary.wordList);
     }

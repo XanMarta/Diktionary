@@ -1,4 +1,3 @@
-
 public class ConsoleApplication {
 
     static Dictionary dictionary = new Dictionary();
