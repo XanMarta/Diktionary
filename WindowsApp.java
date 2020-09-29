@@ -34,32 +34,45 @@ public class WindowsApp {
             public void changedUpdate(DocumentEvent e) {}
         });
 
-        Vector<String> wordList = new Vector<>();
-        wordList.add("Hello");
-        wordList.add("Absort");
-        wordList.add("Brave");
-        wordList.add("Cymatics");
-        list1.setListData(wordList);
-
         list1.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                wordLabel.setText((String)list1.getSelectedValue());
+                showWord();
             }
         });
     }
 
+
     public void changeSearchWord() {
-        System.out.println("Text change: " + textField1.getText());
+        String textInput = textField1.getText();
+        System.out.println("Text change: " + textInput);
+        list1.setListData(manager.getWordHint(textInput));
     }
 
-    public static void main(String[] args) {
+    public void showWord() {
+        String word = (String)list1.getSelectedValue();
+        wordLabel.setText(word);
+        labelMeaning.setText(dictionary.word.get(word).word_explain);
+    }
+
+    public void startApplication() {
         JFrame frame = new JFrame("WindowsApp");
         frame.setContentPane(new WindowsApp().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
+    }
+
+
+    public static Dictionary dictionary = new Dictionary();
+    public static DictionaryManagement manager = new DictionaryManagement(dictionary);
+    public static DictionaryCommandLine command = new DictionaryCommandLine(manager);
+
+    public static void main(String[] args) {
+        WindowsApp app = new WindowsApp();
+        manager.insertFromFile();
+        app.startApplication();
     }
 
 }
