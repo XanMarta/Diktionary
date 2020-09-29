@@ -16,8 +16,8 @@ public class ConsoleApplication {
 
      public static void main(String[] args) {
 
-//         manager.insertFromFile();
-         Files.importCsv(dictionary);
+         manager.insertFromFile();
+//         manager.importCsvFile();
 
          boolean isRunning = true;
          while (isRunning) {

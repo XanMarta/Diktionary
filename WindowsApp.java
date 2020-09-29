@@ -71,7 +71,8 @@ public class WindowsApp {
 
     public static void main(String[] args) {
         WindowsApp app = new WindowsApp();
-        manager.insertFromFile();
+//        manager.insertFromFile();
+        manager.importCsvFile();
         app.startApplication();
     }
 

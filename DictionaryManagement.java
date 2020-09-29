@@ -140,6 +140,19 @@ public class DictionaryManagement {
         return dictionary.wordList;
     }
 
+    public void importCsvFile() {
+        try {
+            Scanner scan = new Scanner(new File("dictionaries.csv"));
+            while (scan.hasNextLine()) {
+                String[] word = scan.nextLine().split(",");
+                dictionary.addWord(word[0].toLowerCase(), "(" + word[1] + ") " + word[2], "", "");
+            }
+            scan.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+    }
+
     public void dictionarySort() {
         Collections.sort(dictionary.wordList);
     }
