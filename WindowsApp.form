@@ -29,46 +29,74 @@
             </constraints>
             <properties>
               <autoscrolls value="true"/>
-              <background color="-2819"/>
+              <background color="-1140307"/>
               <font name="Calisto MT" size="28"/>
+              <foreground color="-7793103"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
+              <minimumSize width="150" height="33"/>
               <opaque value="true"/>
               <preferredSize width="200" height="32"/>
               <text value="WORD"/>
             </properties>
           </component>
-          <scrollpane id="caeb2" binding="contentPanel">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <minimumSize width="768" height="700"/>
-              <preferredSize width="768" height="700"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </scrollpane>
           <tabbedpane id="85c3c" binding="tabbedPane1" default-binding="true">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="200" height="200"/>
               </grid>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <minimumSize width="768" height="30"/>
-              <preferredSize width="768" height="30"/>
-              <tabPlacement value="2"/>
+              <background color="-537386"/>
+              <font name="Lucida Sans Typewriter" size="18"/>
+              <foreground color="-2723428"/>
+              <inheritsPopupMenu value="false"/>
+              <minimumSize width="768" height="730"/>
+              <opaque value="true"/>
+              <preferredSize width="768" height="730"/>
+              <tabLayoutPolicy value="0"/>
+              <tabPlacement value="1"/>
             </properties>
             <border type="none"/>
             <children>
-              <grid id="fb8b9" layout-manager="BorderLayout" hgap="0" vgap="0">
+              <grid id="fb8b9" binding="Meaning" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints>
-                  <tabbedpane title="Untitled"/>
+                  <tabbedpane title="Meaning"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <minimumSize width="200" height="0"/>
+                  <preferredSize width="200" height="0"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="e956c" class="javax.swing.JLabel" binding="labelMeaning">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <text value="This is meaning"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="c676e" binding="Synonym" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <tabbedpane title="Synonym"/>
+                </constraints>
+                <properties>
+                  <minimumSize width="100" height="0"/>
+                  <preferredSize width="100" height="0"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+              <grid id="520da" binding="Antonym" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <tabbedpane title="Antonym"/>
+                </constraints>
+                <properties>
+                  <minimumSize width="100" height="0"/>
+                  <preferredSize width="100" height="0"/>
+                </properties>
                 <border type="none"/>
                 <children/>
               </grid>
@@ -93,23 +121,13 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
           </vspacer>
-          <component id="5c2b9" class="javax.swing.JList" binding="list1" default-binding="true">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <minimumSize width="256" height="650"/>
-            </properties>
-          </component>
           <grid id="7400c" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <background color="-1338949"/>
               <minimumSize width="256" height="38"/>
             </properties>
             <border type="none"/>
@@ -127,6 +145,18 @@
               <horizontalAlignment value="10"/>
               <minimumSize width="300" height="80"/>
               <preferredSize width="300" height="30"/>
+            </properties>
+          </component>
+          <component id="cfe9" class="javax.swing.JList" binding="list1" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <minimumSize width="256" height="660"/>
+              <preferredSize width="256" height="600"/>
             </properties>
           </component>
         </children>
