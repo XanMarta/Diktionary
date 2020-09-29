@@ -15,36 +15,37 @@ public class ConsoleApplication {
         System.out.println();
     }
 
-//     public static void main(String[] args) {
-//
+     public static void main(String[] args) {
+
 //         manager.insertFromFile();
-//
-//         boolean isRunning = true;
-//         while (isRunning) {
-//             showMenu();
-//             int choice = ConsoleC.scan.nextInt();
-//             ConsoleC.scan.nextLine();
-//             switch (choice) {
-//                 case 1:
-//                     command.showAllWords();
-//                     break;
-//                 case 2:
-//                     manager.dictionaryLookup();
-//                     break;
-//                 case 3:
-//                     manager.addWord();
-//                     break;
-//                 case 4:
-//                     manager.eraseWord();
-//                     break;
-//                 case 5:
-//                     isRunning = false;
-//                     break;
-//             }
-//         }
-//
+         Files.importCsv(dictionary);
+
+         boolean isRunning = true;
+         while (isRunning) {
+             showMenu();
+             int choice = ConsoleC.scan.nextInt();
+             ConsoleC.scan.nextLine();
+             switch (choice) {
+                 case 1:
+                     command.showAllWords();
+                     break;
+                 case 2:
+                     manager.dictionaryLookup();
+                     break;
+                 case 3:
+                     manager.addWord();
+                     break;
+                 case 4:
+                     manager.eraseWord();
+                     break;
+                 case 5:
+                     isRunning = false;
+                     break;
+             }
+         }
+
 //         manager.dictionaryExportToFile();
-//         ConsoleC.scan.close();
-//     }
+         ConsoleC.scan.close();
+     }
 
 }
