@@ -1,5 +1,5 @@
 import java.util.Scanner;
 
-public class Console {
+public class ConsoleC {
     static public Scanner scan = new Scanner(System.in);
 }
