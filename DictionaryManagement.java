@@ -160,16 +160,16 @@ public class DictionaryManagement {
         } else {
             boolean found = false;
             for (String key : dictionary.word.keySet()) {
-                if (key.substring(0, target.length()).equalsIgnoreCase(target)) {
-                    System.out.println(key);
-                    found = true;
+                    if (key.substring(0, target.length()).equalsIgnoreCase(target)) {
+                        System.out.println(key);
+                        found = true;
+                    }
+                }
+                if (found == false) {
+                    System.out.println("Your word is not in dictionary yet");
                 }
             }
-            if (found == false) {
-                System.out.println("Your word is not in dictionary yet");
-            }
         }
-    }
 
     public void eraseWord() {
         System.out.print("Input word to erase: ");

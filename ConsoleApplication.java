@@ -1,3 +1,4 @@
+
 public class ConsoleApplication {
 
     static Dictionary dictionary = new Dictionary();
@@ -17,7 +18,6 @@ public class ConsoleApplication {
      public static void main(String[] args) {
 
          manager.insertFromFile();
-//         manager.importCsvFile();
 
          boolean isRunning = true;
          while (isRunning) {
@@ -43,7 +43,7 @@ public class ConsoleApplication {
              }
          }
 
-//         manager.dictionaryExportToFile();
+         manager.dictionaryExportToFile();
          ConsoleC.scan.close();
      }
 
