@@ -6,9 +6,11 @@ public class Dictionary {
     public HashMap<String, Word> word = new HashMap<String, Word>();
 
     public void addWord(String target, String explain, String synonyms, String antonyms) {
-        Word newWord = new Word(target, explain, synonyms, antonyms);
-        wordList.addElement(target);
-        word.put(target, newWord);
+        if (!word.containsKey(target)) {
+            Word newWord = new Word(target, explain, synonyms, antonyms);
+            wordList.addElement(target);
+            word.put(target, newWord);
+        }
     }
 
 }
