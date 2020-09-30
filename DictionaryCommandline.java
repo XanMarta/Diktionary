@@ -38,7 +38,7 @@ class DictionaryCommandLine {
             String target = dictionary.wordList.get(i - 1);
             String explain = dictionary.word.get(target).word_explain;
             String synonyms = dictionary.word.get(target).word_synonyms;
-            String antonyms = dictionary.word.get(target).word_atonyms;
+            String antonyms = dictionary.word.get(target).word_antonyms;
 
             System.out.print(no);
             for (int j = 1; j <= noSpace - no.length(); j++) {
