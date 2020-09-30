@@ -118,7 +118,7 @@ public class DictionaryManagement {
                 else if (wordList.get(mid).compareToIgnoreCase(target) > 0) right = mid - 1;
             }
         }
-        return -1;
+        return left;
     }
 
     public void dictionaryLookup() {
@@ -227,8 +227,14 @@ public class DictionaryManagement {
     }
 
     public Vector<String> getWordHint(String word) {
-//        Vector<String> wordHint = new Vector<>();
-        return dictionary.wordList;
+        int position = binary_search(dictionary.wordList, word);
+        Vector<String> hint = new Vector<>();
+        int wordCount = 0;
+        while (wordCount <= 20 && position + wordCount < dictionary.wordList.size()) {
+            hint.add(dictionary.wordList.get(position + wordCount));
+            wordCount += 1;
+        }
+        return hint;
     }
 
     public void importCsvFile() {

@@ -3,6 +3,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.plaf.multi.MultiLabelUI;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -21,6 +22,7 @@ public class WindowsApp {
     private JPanel Antonym;
     private JList list1;
     private JLabel labelMeaning;
+    private JScrollPane scrollPane;
 
 
     public WindowsApp() {
@@ -37,22 +39,25 @@ public class WindowsApp {
         list1.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                showWord();
+                if (!list1.isSelectionEmpty()) {
+                    showWord();
+                }
             }
         });
+
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 
 
     public void changeSearchWord() {
         String textInput = textField1.getText();
-        System.out.println("Text change: " + textInput);
         list1.setListData(manager.getWordHint(textInput));
     }
 
     public void showWord() {
         String word = (String)list1.getSelectedValue();
         wordLabel.setText(word);
-        labelMeaning.setText(dictionary.word.get(word).word_explain);
+        labelMeaning.setText("<html><p style=\"width:768px\">" + dictionary.word.get(word).word_explain + "</p></html>");
     }
 
     public void startApplication() {
