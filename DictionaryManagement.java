@@ -2,20 +2,58 @@ import java.util.*;
 import java.io.*;
 
 
-class DictionaryCommandLine {
+public class DictionaryManagement {
 
-    final int noSpace = 4;
-    final int targetSpace = 25;
-    final int explainSpace = 20;
-    final int synonymSpace = 20;
-    DictionaryManagement manager = null;
+    public Dictionary dictionary = null;
+    final String sourceFile = "dictionaries.txt";
 
-    public DictionaryCommandLine(DictionaryManagement manager) {
-        this.manager = manager;
+    public DictionaryManagement (Dictionary dictionary) {
+        this.dictionary = dictionary;
+    }
+
+    public void insertFromCommandline() {
+        System.out.print("Input the amount of word: ");
+        int wordAmount = ConsoleC.scan.nextInt();
+        System.out.println();
+        ConsoleC.scan.nextLine();
+
+        for (int i = 1; i <= wordAmount; i++) {
+            System.out.print("Input " + i + " target : ");
+            String target = ConsoleC.scan.nextLine();
+            System.out.print("Input " + i + " explain: ");
+            String explain = ConsoleC.scan.nextLine();
+            System.out.print("Input " + i + " synonym: ");
+            String synonym = ConsoleC.scan.nextLine();
+            System.out.print("Input " + i + " antonym: ");
+            String antonym = ConsoleC.scan.nextLine();
+            dictionary.addWord(target, explain, synonym, antonym);
+        }
+        System.out.println();
+    }
+
+    public void insertFromFile() {
+        try {
+            System.out.println("    -- Input from file --");
+            File file = new File(sourceFile);
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                String[] data = scan.nextLine().split("\\|");
+                dictionary.addWord(data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
+            }
+            scan.close();
+            System.out.println("    -- Input done --");
+        } catch (FileNotFoundException e) {
+            System.out.println("Can't read file: " + sourceFile);
+        }
+        System.out.println();
+        dictionarySort();
     }
 
     public void showAllWords() {
-        Dictionary dictionary = manager.dictionary;
+        int noSpace = 4;
+        int targetSpace = 25;
+        int explainSpace = 20;
+        int synonymSpace = 20;
         System.out.println("    -- Show all words: --");
         // Print header
         System.out.print("No");
@@ -67,71 +105,7 @@ class DictionaryCommandLine {
         for (int i = 1; i <= dictionary.wordList.size(); ++i) {
 
         }
-
          */
-    }
-
-
-    public void dictionaryBasic() {
-        manager.insertFromCommandline();
-        showAllWords();
-    }
-
-    public void dictionaryAdvanced() {
-        manager.insertFromFile();
-        showAllWords();
-        manager.dictionaryLookup();
-    }
-
-}
-
-
-public class DictionaryManagement {
-
-    public Dictionary dictionary = null;
-    final String sourceFile = "dictionaries.txt";
-
-    public DictionaryManagement (Dictionary dictionary) {
-        this.dictionary = dictionary;
-    }
-
-    public void insertFromCommandline() {
-        System.out.print("Input the amount of word: ");
-        int wordAmount = ConsoleC.scan.nextInt();
-        System.out.println();
-        ConsoleC.scan.nextLine();
-
-        for (int i = 1; i <= wordAmount; i++) {
-            System.out.print("Input " + i + " target : ");
-            String target = ConsoleC.scan.nextLine();
-            System.out.print("Input " + i + " explain: ");
-            String explain = ConsoleC.scan.nextLine();
-            System.out.print("Input " + i + " synonym: ");
-            String synonym = ConsoleC.scan.nextLine();
-            System.out.print("Input " + i + " antonym: ");
-            String antonym = ConsoleC.scan.nextLine();
-            dictionary.addWord(target, explain, synonym, antonym);
-        }
-        System.out.println();
-    }
-
-    //Load words from file
-    public void insertFromFile() {
-        try {
-            System.out.println("    -- Input from file --");
-            File file = new File(sourceFile);
-            Scanner scan = new Scanner(file);
-            while (scan.hasNextLine()) {
-                String[] data = scan.nextLine().split("\\|");
-                dictionary.addWord(data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
-            }
-            scan.close();
-            System.out.println("    -- Input done --");
-        } catch (FileNotFoundException e) {
-            System.out.println("Can't read file: " + sourceFile);
-        }
-        System.out.println();
-        dictionarySort();
     }
 
     public static int binary_search(Vector<String> wordList, String target) {

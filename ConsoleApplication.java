@@ -3,7 +3,6 @@ public class ConsoleApplication {
 
     static Dictionary dictionary = new Dictionary();
     static DictionaryManagement manager = new DictionaryManagement(dictionary);
-    static DictionaryCommandLine command = new DictionaryCommandLine(manager);
 
     static void showMenu() {
         System.out.println("        DIKTIONARY");
@@ -26,7 +25,7 @@ public class ConsoleApplication {
              ConsoleC.scan.nextLine();
              switch (choice) {
                  case 1:
-                     command.showAllWords();
+//                     command.showAllWords();
                      break;
                  case 2:
                      manager.dictionaryLookup();

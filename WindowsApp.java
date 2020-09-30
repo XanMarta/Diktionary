@@ -67,7 +67,6 @@ public class WindowsApp {
 
     public static Dictionary dictionary = new Dictionary();
     public static DictionaryManagement manager = new DictionaryManagement(dictionary);
-    public static DictionaryCommandLine command = new DictionaryCommandLine(manager);
 
     public static void main(String[] args) {
         WindowsApp app = new WindowsApp();
