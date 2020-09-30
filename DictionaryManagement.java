@@ -65,7 +65,7 @@ public class DictionaryManagement {
     public void dictionaryLookup() {
         System.out.println("    -- Look up --");
         System.out.print("Input the word you need to find: ");
-        //String target = Console.scan.nextLine();
+        ////String target = Console.scan.nextLine();
         String target = ConsoleC.scan.nextLine();
         int mid = binary_search(dictionary.wordList, target);
         if (mid != -1) {
