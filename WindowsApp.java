@@ -21,6 +21,7 @@ public class WindowsApp {
     private JPanel Antonym;
     private JList list1;
     private JLabel labelMeaning;
+    private JButton internetTranslateButton;
 
 
     public WindowsApp() {
@@ -40,8 +41,21 @@ public class WindowsApp {
                 showWord();
             }
         });
+
+        internetTranslateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                internetTranslale();
+            }
+        });
     }
 
+
+    public void internetTranslale() {
+        String word = textField1.getText();
+        String result = apitranslator.apiTranslate(word);
+        labelMeaning.setText(result);
+    }
 
     public void changeSearchWord() {
         String textInput = textField1.getText();
@@ -68,6 +82,7 @@ public class WindowsApp {
     public static Dictionary dictionary = new Dictionary();
     public static DictionaryManagement manager = new DictionaryManagement(dictionary);
     public static DictionaryCommandLine command = new DictionaryCommandLine(manager);
+    public static apiTranslator apitranslator = new apiTranslator();
 
     public static void main(String[] args) {
         WindowsApp app = new WindowsApp();
