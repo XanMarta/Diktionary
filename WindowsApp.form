@@ -143,7 +143,14 @@
               <minimumSize width="256" height="38"/>
             </properties>
             <border type="none"/>
-            <children/>
+            <children>
+              <component id="b3492" class="javax.swing.JButton" binding="internetTranslateButton" default-binding="true">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <text value="Internet Translate"/>
+                </properties>
+              </component>
+            </children>
           </grid>
           <component id="849b4" class="javax.swing.JTextField" binding="textField1" default-binding="true">
             <constraints>
