@@ -59,6 +59,7 @@ public class WindowsApp {
     public void internetTranslale() {
         String word = textField1.getText();
         String result = apitranslator.apiTranslate(word);
+        wordLabel.setText(word);
         labelMeaning.setText(result);
     }
 
@@ -85,7 +86,6 @@ public class WindowsApp {
 
     public static Dictionary dictionary = new Dictionary();
     public static DictionaryManagement manager = new DictionaryManagement(dictionary);
-    public static DictionaryCommandLine command = new DictionaryCommandLine(manager);
     public static apiTranslator apitranslator = new apiTranslator();
 
     public static void main(String[] args) {
