@@ -70,12 +70,24 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="e956c" class="javax.swing.JLabel" binding="labelMeaning">
-                    <constraints border-constraint="Center"/>
+                  <scrollpane id="9a71" binding="scrollPane">
+                    <constraints border-constraint="West"/>
                     <properties>
-                      <text value="This is meaning"/>
+                      <autoscrolls value="true"/>
+                      <preferredSize width="768" height="700"/>
                     </properties>
-                  </component>
+                    <border type="none"/>
+                    <children>
+                      <component id="e956c" class="javax.swing.JLabel" binding="labelMeaning">
+                        <constraints/>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <horizontalTextPosition value="2"/>
+                          <text value="This is meaning"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
                 </children>
               </grid>
               <grid id="c676e" binding="Synonym" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -149,6 +161,7 @@
             </constraints>
             <properties>
               <background color="-1049089"/>
+              <font name="Consolas" size="22"/>
               <horizontalAlignment value="10"/>
               <minimumSize width="300" height="80"/>
               <preferredSize width="300" height="30"/>
@@ -162,6 +175,7 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <font name="Consolas" size="16"/>
               <minimumSize width="256" height="660"/>
               <preferredSize width="256" height="600"/>
             </properties>

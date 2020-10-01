@@ -1,8 +1,8 @@
+
 public class ConsoleApplication {
 
     static Dictionary dictionary = new Dictionary();
     static DictionaryManagement manager = new DictionaryManagement(dictionary);
-    static DictionaryCommandLine command = new DictionaryCommandLine(manager);
 
     static void showMenu() {
         System.out.println("        DIKTIONARY");
@@ -17,7 +17,6 @@ public class ConsoleApplication {
      public static void main(String[] args) {
 
          manager.insertFromFile();
-//         manager.importCsvFile();
 
          boolean isRunning = true;
          while (isRunning) {
@@ -26,7 +25,7 @@ public class ConsoleApplication {
              ConsoleC.scan.nextLine();
              switch (choice) {
                  case 1:
-                     command.showAllWords();
+//                     command.showAllWords();
                      break;
                  case 2:
                      manager.dictionaryLookup();
@@ -43,7 +42,7 @@ public class ConsoleApplication {
              }
          }
 
-//         manager.dictionaryExportToFile();
+         manager.dictionaryExportToFile();
          ConsoleC.scan.close();
      }
 
