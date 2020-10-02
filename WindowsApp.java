@@ -1,12 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.multi.MultiLabelUI;
+import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.util.Vector;
 
 
@@ -24,6 +27,7 @@ public class WindowsApp {
     private JLabel labelMeaning;
     private JButton internetTranslateButton;
     private JScrollPane scrollPane;
+    private JButton googleButton;
 
 
     public WindowsApp() {
@@ -52,6 +56,20 @@ public class WindowsApp {
                 internetTranslale();
             }
         });
+
+        try {
+            Image img = ImageIO.read(getClass().getResource("google.png"));
+            googleButton.setIcon(new ImageIcon(img));
+        } catch (IOException e) {
+        }
+
+        googleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seletranslator.seleTranslate(textField1.getText());
+            }
+        });
+
         scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 
@@ -89,6 +107,7 @@ public class WindowsApp {
     public static Dictionary dictionary = new Dictionary();
     public static DictionaryManagement manager = new DictionaryManagement(dictionary);
     public static apiTranslator apitranslator = new apiTranslator();
+    public static seleTranslator seletranslator = new seleTranslator();
 
     public static void main(String[] args) {
         try {

@@ -146,9 +146,19 @@
             <border type="none"/>
             <children>
               <component id="b3492" class="javax.swing.JButton" binding="internetTranslateButton" default-binding="true">
-                <constraints border-constraint="Center"/>
+                <constraints border-constraint="West"/>
                 <properties>
+                  <minimumSize width="146" height="30"/>
+                  <preferredSize width="146" height="30"/>
                   <text value="Internet Translate"/>
+                </properties>
+              </component>
+              <component id="bafdd" class="javax.swing.JButton" binding="googleButton">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <minimumSize width="110" height="30"/>
+                  <preferredSize width="110" height="30"/>
+                  <text value="Google"/>
                 </properties>
               </component>
             </children>
