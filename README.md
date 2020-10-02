@@ -1,2 +1,3 @@
 # Diktionary
  
+![Libraries](libraries.PNG)
