@@ -17,21 +17,4 @@ public class Dictionary {
             word.get(target).word_explain += "<br>" + explain;
         }
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        Trie<String, String> trie = new PatriciaTrie<>();
-        Scanner scan = new Scanner(new File("dictionaries.txt"));
-        while (scan.hasNextLine()) {
-            String[] line = scan.nextLine().split("\\|");
-            for (String word : line) {
-                word = word.trim();
-                trie.put(word, word.toUpperCase());
-            }
-        }
-        scan.close();
-
-//        trie.
-//        System.out.println(trie.get("donkey") + " " + trie.get("file"));
-    }
-
 }

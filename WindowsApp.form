@@ -168,6 +168,7 @@
               <minimumSize width="256" height="80"/>
               <preferredSize width="30" height="30"/>
               <requestFocusEnabled value="true"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="cfe9" class="javax.swing.JList" binding="list1" default-binding="true">

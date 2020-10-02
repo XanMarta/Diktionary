@@ -91,6 +91,11 @@ public class WindowsApp {
     public static apiTranslator apitranslator = new apiTranslator();
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getInstalledLookAndFeels()[3].getClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         WindowsApp app = new WindowsApp();
 //        manager.insertFromFile();
         manager.importCsvFile();
