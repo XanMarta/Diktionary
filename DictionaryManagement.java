@@ -46,7 +46,6 @@ public class DictionaryManagement {
             System.out.println("Can't read file: " + sourceFile);
         }
         System.out.println();
-        dictionarySort();
     }
 
     public void showAllWords() {
@@ -74,9 +73,9 @@ public class DictionaryManagement {
         }
         System.out.println("|  Antonyms");
         // Print content
-        for (int i = 1; i <= dictionary.wordList.size(); i++) {
-            String no = i + "";
-            String target = dictionary.wordList.get(i - 1);
+        int count = 1;
+        for (String target : dictionary.word.keySet()) {
+            String no = count++ + "";
             String explain = dictionary.word.get(target).word_explain;
             String synonyms = dictionary.word.get(target).word_synonyms;
             String antonyms = dictionary.word.get(target).word_antonyms;
@@ -100,82 +99,34 @@ public class DictionaryManagement {
             System.out.println("|" + antonyms);
         }
         System.out.println();
-        /*
-        System.out.println("Synonyms");
-        for (int i = 1; i <= dictionary.wordList.size(); ++i) {
-
-        }
-         */
-    }
-
-    public static int binary_search(Vector<String> wordList, String target) {
-        int left = 0, right = wordList.size() - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (wordList.get(mid).compareToIgnoreCase(target) == 0) return mid;
-            else {
-                if (wordList.get(mid).compareToIgnoreCase(target) < 0) left = mid + 1;
-                else if (wordList.get(mid).compareToIgnoreCase(target) > 0) right = mid - 1;
-            }
-        }
-        return left;
     }
 
     public void dictionaryLookup() {
         System.out.println("    -- Look up --");
         System.out.print("Input the word you need to find: ");
-        ////String target = Console.scan.nextLine();
         String target = ConsoleC.scan.nextLine();
-        int mid = binary_search(dictionary.wordList, target);
-        if (mid != -1) {
-            System.out.println("Meaning: " + dictionary.word.get(dictionary.wordList.get(mid)).word_explain);
-            System.out.println("Synonyms: " + dictionary.word.get(dictionary.wordList.get(mid)).word_synonyms);
-            System.out.println("Antonyms: " + dictionary.word.get(dictionary.wordList.get(mid)).word_antonyms);
+
+        if (dictionary.word.containsKey(target)) {
+            Word word = dictionary.word.get(target);
+            System.out.println("Meaning: " + word.word_explain);
+            System.out.println("Synonyms: " + word.word_synonyms);
+            System.out.println("Antonyms: " + word.word_antonyms);
         } else {
-            boolean found = false;
-            for (String key : dictionary.word.keySet()) {
-                    if (key.substring(0, target.length()).equalsIgnoreCase(target)) {
-                        System.out.println(key);
-                        found = true;
-                    }
-                }
-                if (found == false) {
-                    System.out.println("Your word is not in dictionary yet");
-                }
-            }
+            System.out.println("Your word is not in dictionary yet");
         }
+    }
 
     public void eraseWord() {
         System.out.print("Input word to erase: ");
         String target = ConsoleC.scan.nextLine();
-        int mid = binary_search(dictionary.wordList, target);
-        if (mid != -1) {
-            target = dictionary.wordList.get(mid);
-            if (dictionary.wordList.remove(target)) {
-                dictionary.word.remove(target);
-                System.out.println("Remove word " + target + " successfully");
-            }
-        } else {
-            System.out.println("Dictionary doesn't contain the word " + target);
-        }
-        System.out.println();
-        /*
-        if (dictionary.wordList.remove(target)) {
-            dictionary.word.remove(target);
-            System.out.println("Remove word " + target + " successfully");
-        } else {
-            System.out.println("Dictionary doesn't contain the word " + target);
-        }
-        System.out.println();
-         */
+        dictionary.word.remove(target);
     }
 
     public void addWord() {
         System.out.println("    -- Add word --");
         System.out.print("Input word target: ");
         String target = ConsoleC.scan.nextLine();
-        int mid = binary_search(dictionary.wordList, target);
-        if (mid != -1) {
+        if (dictionary.word.containsKey(target)) {
             System.out.println("Dictionary has already had word '" + target + "' with meaning '" + dictionary.word.get(target).word_explain + "'");
             System.out.print("Input y to continue to change the meaning: ");
             String temp = ConsoleC.scan.nextLine();
@@ -200,7 +151,6 @@ public class DictionaryManagement {
             dictionary.addWord(target, explain, synonym, antonym);
         }
         System.out.println();
-        dictionarySort();
     }
 
     public void dictionaryExportToFile() {
@@ -212,7 +162,7 @@ public class DictionaryManagement {
             }
             System.out.println("    -- Start writing --");
             FileWriter writer = new FileWriter(sourceFile);
-            for (String target : dictionary.wordList) {
+            for (String target : dictionary.word.keySet()) {
                 writer.write(target + " | "
                         + dictionary.word.get(target).word_explain
                         + " | " + dictionary.word.get(target).word_synonyms
@@ -226,15 +176,8 @@ public class DictionaryManagement {
         System.out.println();
     }
 
-    public Vector<String> getWordHint(String word) {
-        int position = binary_search(dictionary.wordList, word);
-        Vector<String> hint = new Vector<>();
-        int wordCount = 0;
-        while (wordCount <= 20 && position + wordCount < dictionary.wordList.size()) {
-            hint.add(dictionary.wordList.get(position + wordCount));
-            wordCount += 1;
-        }
-        return hint;
+    public Set<String> getWordHint(String word) {
+        return dictionary.word.prefixMap(word).keySet();
     }
 
     public void importCsvFile() {
@@ -248,10 +191,6 @@ public class DictionaryManagement {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-    }
-
-    public void dictionarySort() {
-        Collections.sort(dictionary.wordList, String.CASE_INSENSITIVE_ORDER);
     }
 
 }

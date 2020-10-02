@@ -64,8 +64,10 @@ public class WindowsApp {
     }
 
     public void changeSearchWord() {
-        String textInput = textField1.getText();
-        list1.setListData(manager.getWordHint(textInput));
+        String textInput = textField1.getText().toLowerCase();
+        DefaultListModel<String> model = new DefaultListModel<>();
+        model.addAll(manager.getWordHint(textInput));
+        list1.setModel(model);
     }
 
     public void showWord() {
