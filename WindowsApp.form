@@ -34,15 +34,16 @@
               <foreground color="-7793103"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <minimumSize width="150" height="33"/>
+              <maximumSize width="640" height="33"/>
+              <minimumSize width="640" height="33"/>
               <opaque value="true"/>
-              <preferredSize width="200" height="32"/>
+              <preferredSize width="640" height="32"/>
               <text value="WORD"/>
             </properties>
           </component>
           <tabbedpane id="85c3c" binding="tabbedPane1" default-binding="true">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="200" height="200"/>
               </grid>
               <gridbag weightx="0.0" weighty="0.0"/>
@@ -114,6 +115,16 @@
               </grid>
             </children>
           </tabbedpane>
+          <component id="25fa" class="javax.swing.JButton" binding="ttsButton">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <label value="TTS"/>
+              <text value="TTS"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="e0c66" binding="rightPanel" layout-manager="GridBagLayout">

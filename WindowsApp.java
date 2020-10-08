@@ -4,13 +4,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.multi.MultiLabelUI;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import java.util.Vector;
 
 
 public class WindowsApp {
@@ -28,6 +24,7 @@ public class WindowsApp {
     private JButton internetTranslateButton;
     private JScrollPane scrollPane;
     private JButton googleButton;
+    private JButton ttsButton;
 
 
     public WindowsApp() {
@@ -58,15 +55,26 @@ public class WindowsApp {
         });
 
         try {
-            Image img = ImageIO.read(getClass().getResource("google.png"));
+            Image img = ImageIO.read(getClass().getResource("image/google.png"));
             googleButton.setIcon(new ImageIcon(img));
-        } catch (IOException e) {
-        }
+        } catch (IOException e) { }
+
+        try {
+            Image img = ImageIO.read(getClass().getResource("image/speaker.png"));
+            ttsButton.setIcon(new ImageIcon(img));
+        } catch (IOException e) { }
 
         googleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 seletranslator.seleTranslate(textField1.getText());
+            }
+        });
+
+        ttsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ttstranslator.speakTTS(textField1.getText());
             }
         });
 
@@ -108,6 +116,7 @@ public class WindowsApp {
     public static DictionaryManagement manager = new DictionaryManagement(dictionary);
     public static apiTranslator apitranslator = new apiTranslator();
     public static seleTranslator seletranslator = new seleTranslator();
+    public static translateTTS ttstranslator = new translateTTS();
 
     public static void main(String[] args) {
         try {
