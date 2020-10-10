@@ -5,6 +5,7 @@
       <xy x="20" y="20" width="768" height="640"/>
     </constraints>
     <properties>
+      <background color="-136449"/>
       <minimumSize width="768" height="640"/>
       <preferredSize width="768" height="640"/>
     </properties>
@@ -12,13 +13,13 @@
     <children>
       <hspacer id="ce181">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
       </hspacer>
       <grid id="1d932" binding="bodyPanel" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -54,13 +55,13 @@
             <children>
               <vspacer id="68894">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
               </vspacer>
               <tabbedpane id="82c79" binding="tabExplain">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="200" height="200"/>
                   </grid>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -123,16 +124,38 @@
               </tabbedpane>
               <component id="affa" class="javax.swing.JLabel" binding="labelExplain">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
                   <background color="-2634241"/>
                   <font name="Comic Sans MS" size="26" style="1"/>
                   <horizontalAlignment value="0"/>
-                  <minimumSize width="598" height="50"/>
-                  <preferredSize width="598" height="50"/>
+                  <minimumSize width="518" height="50"/>
+                  <preferredSize width="518" height="50"/>
                   <text value="Word"/>
+                </properties>
+              </component>
+              <component id="31a46" class="javax.swing.JButton" binding="voiceButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <minimumSize width="40" height="40"/>
+                  <preferredSize width="40" height="40"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="3de64" class="javax.swing.JButton" binding="starButton">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <minimumSize width="40" height="40"/>
+                  <preferredSize width="40" height="40"/>
+                  <text value=""/>
                 </properties>
               </component>
             </children>
@@ -164,8 +187,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <minimumSize width="768" height="50"/>
-          <preferredSize width="768" height="50"/>
+          <background color="-136449"/>
+          <minimumSize width="718" height="50"/>
+          <preferredSize width="718" height="50"/>
         </properties>
         <border type="none"/>
         <children>
@@ -200,7 +224,7 @@
       </grid>
       <scrollpane id="76200" binding="textPanel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -220,6 +244,18 @@
           </component>
         </children>
       </scrollpane>
+      <component id="642c2" class="javax.swing.JLabel" binding="loadingPanel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <minimumSize width="50" height="50"/>
+          <preferredSize width="50" height="50"/>
+          <text value=""/>
+          <visible value="false"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

@@ -1,10 +1,10 @@
 import com.sun.speech.freetts.*;
 
-public class translateTTS {
+public class ttsTranslator {
 
     private Voice voice = null;
 
-    public translateTTS() {
+    public ttsTranslator() {
         try {
             System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
             VoiceManager manager = VoiceManager.getInstance();
@@ -15,7 +15,7 @@ public class translateTTS {
         }
     }
 
-    public void speakTTS(String word) {
+    public void ttsSpeak(String word) {
         if (voice != null) {
             voice.speak(word);
         }
