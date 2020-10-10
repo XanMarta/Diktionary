@@ -2,211 +2,254 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="WindowsApp">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="1" y="3" width="1112" height="841"/>
+      <xy x="20" y="20" width="768" height="640"/>
     </constraints>
     <properties>
-      <minimumSize width="1024" height="768"/>
-      <preferredSize width="1024" height="768"/>
+      <background color="-136449"/>
+      <minimumSize width="768" height="640"/>
+      <preferredSize width="768" height="640"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="99ef7" binding="leftPanel" layout-manager="GridBagLayout">
+      <grid id="1d932" binding="bodyPanel" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <background color="-1677692"/>
-          <font name="Source Code Pro" size="22"/>
-          <preferredSize width="768" height="768"/>
+          <minimumSize width="768" height="490"/>
+          <preferredSize width="768" height="490"/>
+          <requestFocusEnabled value="false"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="90667" class="javax.swing.JLabel" binding="wordLabel">
+          <hspacer id="98f3c">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties>
-              <autoscrolls value="true"/>
-              <background color="-1140307"/>
-              <font name="Calisto MT" size="28"/>
-              <foreground color="-7793103"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <maximumSize width="640" height="33"/>
-              <minimumSize width="640" height="33"/>
-              <opaque value="true"/>
-              <preferredSize width="640" height="32"/>
-              <text value="WORD"/>
-            </properties>
-          </component>
-          <tabbedpane id="85c3c" binding="tabbedPane1" default-binding="true">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="200" height="200"/>
-              </grid>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <background color="-537386"/>
-              <font name="Lucida Sans Typewriter" size="18"/>
-              <foreground color="-2723428"/>
-              <inheritsPopupMenu value="false"/>
-              <minimumSize width="768" height="730"/>
-              <opaque value="true"/>
-              <preferredSize width="768" height="730"/>
-              <tabLayoutPolicy value="0"/>
-              <tabPlacement value="1"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <grid id="fb8b9" binding="Meaning" layout-manager="BorderLayout" hgap="0" vgap="0">
-                <constraints>
-                  <tabbedpane title="Meaning"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="200" height="0"/>
-                  <preferredSize width="200" height="0"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <scrollpane id="9a71" binding="scrollPane">
-                    <constraints border-constraint="West"/>
-                    <properties>
-                      <autoscrolls value="true"/>
-                      <preferredSize width="768" height="700"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="e956c" class="javax.swing.JLabel" binding="labelMeaning">
-                        <constraints/>
-                        <properties>
-                          <font name="Consolas" size="18"/>
-                          <horizontalTextPosition value="2"/>
-                          <text value="This is meaning"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </scrollpane>
-                </children>
-              </grid>
-              <grid id="c676e" binding="Synonym" layout-manager="BorderLayout" hgap="0" vgap="0">
-                <constraints>
-                  <tabbedpane title="Synonym"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="100" height="0"/>
-                  <preferredSize width="100" height="0"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
-              <grid id="520da" binding="Antonym" layout-manager="BorderLayout" hgap="0" vgap="0">
-                <constraints>
-                  <tabbedpane title="Antonym"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="100" height="0"/>
-                  <preferredSize width="100" height="0"/>
-                </properties>
-                <border type="none"/>
-                <children/>
-              </grid>
-            </children>
-          </tabbedpane>
-          <component id="25fa" class="javax.swing.JButton" binding="ttsButton">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <label value="TTS"/>
-              <text value="TTS"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <grid id="e0c66" binding="rightPanel" layout-manager="GridBagLayout">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <background color="-1338949"/>
-          <minimumSize width="256" height="778"/>
-          <preferredSize width="256" height="768"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <vspacer id="af3b2">
+          </hspacer>
+          <vspacer id="1293a">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
           </vspacer>
-          <grid id="7400c" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="fe5a5" binding="explainPanel" layout-manager="GridBagLayout">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <background color="-1338949"/>
-              <minimumSize width="256" height="38"/>
+              <background color="-3280641"/>
+              <minimumSize width="598" height="490"/>
+              <preferredSize width="598" height="490"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="b3492" class="javax.swing.JButton" binding="internetTranslateButton" default-binding="true">
-                <constraints border-constraint="West"/>
+              <vspacer id="68894">
+                <constraints>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+              </vspacer>
+              <tabbedpane id="82c79" binding="tabExplain">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="200"/>
+                  </grid>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
                 <properties>
-                  <minimumSize width="146" height="30"/>
-                  <preferredSize width="146" height="30"/>
-                  <text value="Internet Translate"/>
+                  <font name="Comic Sans MS" size="20"/>
+                  <minimumSize width="598" height="440"/>
+                  <preferredSize width="598" height="440"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="ddd78" binding="meaningTab" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <tabbedpane title="Meaning"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <scrollpane id="930e7" binding="scrollMeaning">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="75611" class="javax.swing.JLabel" binding="textMeaning">
+                            <constraints/>
+                            <properties>
+                              <font name="Comic Sans MS" size="16"/>
+                              <text value="This is meaning"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </scrollpane>
+                    </children>
+                  </grid>
+                  <grid id="d08e" binding="synonymTab" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <tabbedpane title="Synonym"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="88491" class="javax.swing.JLabel" binding="textSynonym">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <font name="Comic Sans MS" size="16"/>
+                          <text value="This is synonym"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="1490a" binding="imageTab" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Image"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </tabbedpane>
+              <component id="affa" class="javax.swing.JLabel" binding="labelExplain">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-2634241"/>
+                  <font name="Comic Sans MS" size="26" style="1"/>
+                  <horizontalAlignment value="0"/>
+                  <minimumSize width="518" height="50"/>
+                  <preferredSize width="518" height="50"/>
+                  <text value="Word"/>
                 </properties>
               </component>
-              <component id="bafdd" class="javax.swing.JButton" binding="googleButton">
-                <constraints border-constraint="East"/>
+              <component id="31a46" class="javax.swing.JButton" binding="voiceButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
                 <properties>
-                  <minimumSize width="110" height="30"/>
-                  <preferredSize width="110" height="30"/>
-                  <text value="Google"/>
+                  <minimumSize width="40" height="40"/>
+                  <preferredSize width="40" height="40"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="3de64" class="javax.swing.JButton" binding="starButton">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <minimumSize width="40" height="40"/>
+                  <preferredSize width="40" height="40"/>
+                  <text value=""/>
                 </properties>
               </component>
             </children>
           </grid>
-          <component id="849b4" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <scrollpane id="1b7dd" binding="listPanel">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <background color="-1049089"/>
-              <columns value="2"/>
-              <font name="Consolas" size="22"/>
-              <horizontalAlignment value="10"/>
-              <minimumSize width="256" height="80"/>
-              <preferredSize width="30" height="30"/>
-              <requestFocusEnabled value="true"/>
-              <text value=""/>
+              <minimumSize width="170" height="490"/>
+              <preferredSize width="170" height="490"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="58c1e" class="javax.swing.JList" binding="wordList">
+                <constraints/>
+                <properties>
+                  <background color="-1770241"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="56634" binding="buttonPanel" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-136449"/>
+          <minimumSize width="718" height="50"/>
+          <preferredSize width="718" height="50"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a41a2" class="javax.swing.JButton" binding="translateButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Translate"/>
             </properties>
           </component>
-          <component id="cfe9" class="javax.swing.JList" binding="list1" default-binding="true">
+          <component id="6f94" class="javax.swing.JButton" binding="apiButton">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Consolas" size="16"/>
-              <minimumSize width="256" height="660"/>
-              <preferredSize width="256" height="600"/>
+              <text value="Internet Translate"/>
+            </properties>
+          </component>
+          <component id="32c87" class="javax.swing.JButton" binding="seleButton">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Google"/>
             </properties>
           </component>
         </children>
       </grid>
+      <scrollpane id="76200" binding="textPanel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <minimumSize width="768" height="100"/>
+          <preferredSize width="768" height="100"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="28a05" class="javax.swing.JTextField" binding="textInput">
+            <constraints/>
+            <properties>
+              <columns value="0"/>
+              <font name="Comic Sans MS" size="18"/>
+              <horizontalAlignment value="10"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="642c2" class="javax.swing.JLabel" binding="loadingPanel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <minimumSize width="50" height="50"/>
+          <preferredSize width="50" height="50"/>
+          <text value=""/>
+          <visible value="false"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
