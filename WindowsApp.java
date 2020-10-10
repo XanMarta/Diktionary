@@ -37,15 +37,15 @@ public class WindowsApp {
 
     public WindowsApp() {
         textInput.getDocument().addDocumentListener(new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) {changeSearchWord();}
-            public void removeUpdate(DocumentEvent e) {changeSearchWord();}
+            public void insertUpdate(DocumentEvent e) {changeSearchWord(getTextInput());}
+            public void removeUpdate(DocumentEvent e) {changeSearchWord(getTextInput());}
             public void changedUpdate(DocumentEvent e) {}
         });
         textInput.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    translateWord(textInput.getText());
+                    translateWord(getTextInput());
                 }
             }
         });
@@ -58,17 +58,17 @@ public class WindowsApp {
         });
         translateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                translateWord(textInput.getText());
+                translateWord(getTextInput());
             }
         });
         apiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                apiTranslate(textInput.getText());
+                apiTranslate(getTextInput());
             }
         });
         seleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                seleTranslate(textInput.getText());
+                seleTranslate(getTextInput());
             }
         });
         voiceButton.addActionListener(new ActionListener() {
@@ -92,11 +92,15 @@ public class WindowsApp {
         scrollMeaning.getVerticalScrollBar().setUnitIncrement(20);
         scrollMeaning.getHorizontalScrollBar().setUnitIncrement(20);
 
+        changeSearchWord("");
     }
 
 
-    public void changeSearchWord() {
-        String word = textInput.getText().toLowerCase();
+    public String getTextInput() {
+        return textInput.getText().toLowerCase();
+    }
+
+    public void changeSearchWord(String word) {
         DefaultListModel<String> model = new DefaultListModel<>();
         model.addAll(manager.getWordHint(word));
         wordList.setModel(model);
