@@ -11,19 +11,20 @@ public class Application {
     public static JFrame mainFrame;
 
 
-    public static void startApplication(JPanel mainPanel) {
-        mainFrame = new JFrame("Diktionary");
+    public static void startApplication(JPanel mainPanel, String title) {
+        mainFrame = new JFrame(title);
         mainFrame.setContentPane(mainPanel);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setResizable(false);
-        mainFrame.setVisible(true);
         mainFrame.pack();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
     }
 
 
     public static void main(String[] args) {
         manager.importCsvFile();
-        startApplication(new WindowsApp().getMainPanel());
+        startApplication(new WindowsApp().getMainPanel(), "Diktionary");
     }
 
 }

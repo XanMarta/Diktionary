@@ -14,7 +14,7 @@ public class Dictionary {
             Word newWord = new Word(target, explain, synonyms, antonyms);
             word.put(target, newWord);
         } else {
-            word.get(target).word_explain += "<br>" + explain;
+            word.get(target).word_explain += ";" + explain;
         }
     }
 }

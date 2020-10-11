@@ -174,7 +174,7 @@ public class WindowsApp {
         }
         if (isAccess) {
             Application.mainFrame.dispose();
-            Application.startApplication(new AdminApp().getMainPanel());
+            Application.startApplication(new AdminApp().getMainPanel(), "Admin Mode");
         }
     }
 
