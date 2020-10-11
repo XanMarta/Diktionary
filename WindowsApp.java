@@ -35,6 +35,8 @@ public class WindowsApp {
     private JButton starButton;
     private JLabel loadingPanel;
 
+    private String password = "password";
+
     public WindowsApp() {
         textInput.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {changeSearchWord(getTextInput());}
@@ -76,6 +78,11 @@ public class WindowsApp {
                 ttsTranslate(labelExplain.getText());
             }
         });
+        starButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                adminAccess();
+            }
+        });
         try {
             Image img = ImageIO.read(getClass().getResource("image/speaker.png"));
             voiceButton.setIcon(new ImageIcon(img));
@@ -93,6 +100,7 @@ public class WindowsApp {
         scrollMeaning.getHorizontalScrollBar().setUnitIncrement(20);
 
         changeSearchWord("");
+
     }
 
 
@@ -147,6 +155,23 @@ public class WindowsApp {
                 loadingPanel.setVisible(false);
             }
         }.start();
+    }
+
+    public void adminAccess() {
+        boolean isAccess = false;
+        while (true) {
+            String input = JOptionPane.showInputDialog(mainPanel, "Type password to enter Admin Mode");
+            if (input == null) {
+                break;
+            }
+            if (input.equals(password)) {
+                JOptionPane.showMessageDialog(mainPanel, "You're on!");
+                isAccess = true;
+                break;
+            } else {
+                JOptionPane.showMessageDialog(mainPanel, "Wrong password");
+            }
+        }
     }
 
     public static void startApplication() {
