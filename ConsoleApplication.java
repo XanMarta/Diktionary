@@ -2,7 +2,7 @@
 public class ConsoleApplication {
 
     static Dictionary dictionary = new Dictionary();
-    static DictionaryManagement manager = new DictionaryManagement(dictionary);
+    static DictionaryManagement manager = new DictionaryManagement();
 
     static void showMenu() {
         System.out.println("        DIKTIONARY");

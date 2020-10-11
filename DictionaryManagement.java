@@ -4,12 +4,7 @@ import java.io.*;
 
 public class DictionaryManagement {
 
-    public Dictionary dictionary = null;
     final String sourceFile = "dictionaries.txt";
-
-    public DictionaryManagement (Dictionary dictionary) {
-        this.dictionary = dictionary;
-    }
 
     public void insertFromCommandline() {
         System.out.print("Input the amount of word: ");
@@ -26,7 +21,7 @@ public class DictionaryManagement {
             String synonym = ConsoleC.scan.nextLine();
             System.out.print("Input " + i + " antonym: ");
             String antonym = ConsoleC.scan.nextLine();
-            dictionary.addWord(target, explain, synonym, antonym);
+            Application.dictionary.addWord(target, explain, synonym, antonym);
         }
         System.out.println();
     }
@@ -38,7 +33,7 @@ public class DictionaryManagement {
             Scanner scan = new Scanner(file);
             while (scan.hasNextLine()) {
                 String[] data = scan.nextLine().split("\\|");
-                dictionary.addWord(data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
+                Application.dictionary.addWord(data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
             }
             scan.close();
             System.out.println("    -- Input done --");
@@ -74,11 +69,11 @@ public class DictionaryManagement {
         System.out.println("|  Antonyms");
         // Print content
         int count = 1;
-        for (String target : dictionary.word.keySet()) {
+        for (String target : Application.dictionary.word.keySet()) {
             String no = count++ + "";
-            String explain = dictionary.word.get(target).word_explain;
-            String synonyms = dictionary.word.get(target).word_synonyms;
-            String antonyms = dictionary.word.get(target).word_antonyms;
+            String explain = Application.dictionary.word.get(target).word_explain;
+            String synonyms = Application.dictionary.word.get(target).word_synonyms;
+            String antonyms = Application.dictionary.word.get(target).word_antonyms;
 
             System.out.print(no);
             for (int j = 1; j <= noSpace - no.length(); j++) {
@@ -106,8 +101,8 @@ public class DictionaryManagement {
         System.out.print("Input the word you need to find: ");
         String target = ConsoleC.scan.nextLine();
 
-        if (dictionary.word.containsKey(target)) {
-            Word word = dictionary.word.get(target);
+        if (Application.dictionary.word.containsKey(target)) {
+            Word word = Application.dictionary.word.get(target);
             System.out.println("Meaning: " + word.word_explain);
             System.out.println("Synonyms: " + word.word_synonyms);
             System.out.println("Antonyms: " + word.word_antonyms);
@@ -119,15 +114,16 @@ public class DictionaryManagement {
     public void eraseWord() {
         System.out.print("Input word to erase: ");
         String target = ConsoleC.scan.nextLine();
-        dictionary.word.remove(target);
+        Application.dictionary.word.remove(target);
     }
 
     public void addWord() {
         System.out.println("    -- Add word --");
         System.out.print("Input word target: ");
         String target = ConsoleC.scan.nextLine();
-        if (dictionary.word.containsKey(target)) {
-            System.out.println("Dictionary has already had word '" + target + "' with meaning '" + dictionary.word.get(target).word_explain + "'");
+        if (Application.dictionary.word.containsKey(target)) {
+            System.out.println("Dictionary has already had word '" + target
+                    + "' with meaning '" + Application.dictionary.word.get(target).word_explain + "'");
             System.out.print("Input y to continue to change the meaning: ");
             String temp = ConsoleC.scan.nextLine();
             if (temp.equals("y") || temp.equals("Y")) {
@@ -137,9 +133,9 @@ public class DictionaryManagement {
                 String synonym = ConsoleC.scan.nextLine();
                 System.out.print("Input word antonym: ");
                 String antonym = ConsoleC.scan.nextLine();
-                dictionary.word.get(target).word_explain = explain;
-                dictionary.word.get(target).word_synonyms = synonym;
-                dictionary.word.get(target).word_antonyms = antonym;
+                Application.dictionary.word.get(target).word_explain = explain;
+                Application.dictionary.word.get(target).word_synonyms = synonym;
+                Application.dictionary.word.get(target).word_antonyms = antonym;
             }
         } else {
             System.out.print("Input word explain: ");
@@ -148,7 +144,7 @@ public class DictionaryManagement {
             String synonym = ConsoleC.scan.nextLine();
             System.out.print("Input word antonym: ");
             String antonym = ConsoleC.scan.nextLine();
-            dictionary.addWord(target, explain, synonym, antonym);
+            Application.dictionary.addWord(target, explain, synonym, antonym);
         }
         System.out.println();
     }
@@ -162,11 +158,11 @@ public class DictionaryManagement {
             }
             System.out.println("    -- Start writing --");
             FileWriter writer = new FileWriter(sourceFile);
-            for (String target : dictionary.word.keySet()) {
+            for (String target : Application.dictionary.word.keySet()) {
                 writer.write(target + " | "
-                        + dictionary.word.get(target).word_explain
-                        + " | " + dictionary.word.get(target).word_synonyms
-                        + " | " + dictionary.word.get(target).word_antonyms + "\n");
+                        + Application.dictionary.word.get(target).word_explain
+                        + " | " + Application.dictionary.word.get(target).word_synonyms
+                        + " | " + Application.dictionary.word.get(target).word_antonyms + "\n");
             }
             writer.close();
             System.out.println("    -- Writing completed --");
@@ -177,7 +173,7 @@ public class DictionaryManagement {
     }
 
     public Set<String> getWordHint(String word) {
-        return dictionary.word.prefixMap(word).keySet();
+        return Application.dictionary.word.prefixMap(word).keySet();
     }
 
     public void importCsvFile() {
@@ -185,7 +181,7 @@ public class DictionaryManagement {
             Scanner scan = new Scanner(new File("dictionaries.csv"));
             while (scan.hasNextLine()) {
                 String[] word = scan.nextLine().split(",");
-                dictionary.addWord(word[0].toLowerCase(), "(" + word[1] + ") " + word[2], "", "");
+                Application.dictionary.addWord(word[0].toLowerCase(), "(" + word[1] + ") " + word[2], "", "");
             }
             scan.close();
         } catch (FileNotFoundException e) {

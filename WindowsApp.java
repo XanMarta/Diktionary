@@ -110,15 +110,15 @@ public class WindowsApp {
 
     public void changeSearchWord(String word) {
         DefaultListModel<String> model = new DefaultListModel<>();
-        model.addAll(manager.getWordHint(word));
+        model.addAll(Application.manager.getWordHint(word));
         wordList.setModel(model);
     }
 
     public void translateWord(String word) {
         labelExplain.setText(word);
-        if (dictionary.word.containsKey(word)) {
-            textMeaning.setText(ConsoleC.textToHtml(dictionary.word.get(word).word_explain, 768));
-            textSynonym.setText(ConsoleC.textToHtml(dictionary.word.get(word).word_synonyms, 768));
+        if (Application.dictionary.word.containsKey(word)) {
+            textMeaning.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_explain, 768));
+            textSynonym.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_synonyms, 768));
         } else {
             textMeaning.setText("There no word \"" + word + "\" in diktionary");
             textSynonym.setText("There no word \"" + word + "\" in diktionary");
@@ -129,7 +129,7 @@ public class WindowsApp {
         new Thread() {
             public void run() {
                 loadingPanel.setVisible(true);
-                String result = apitranslator.apiTranslate(word);
+                String result = Application.apitranslator.apiTranslate(word);
                 labelExplain.setText(word);
                 textMeaning.setText(result);
                 loadingPanel.setVisible(false);
@@ -141,7 +141,7 @@ public class WindowsApp {
         new Thread() {
             public void run() {
                 loadingPanel.setVisible(true);
-                seletranslator.seleTranslate(word);
+                Application.seletranslator.seleTranslate(word);
                 loadingPanel.setVisible(false);
             }
         }.start();
@@ -151,7 +151,7 @@ public class WindowsApp {
         new Thread() {
             public void run() {
                 loadingPanel.setVisible(true);
-                ttstranslator.ttsSpeak(word);
+                Application.ttstranslator.ttsSpeak(word);
                 loadingPanel.setVisible(false);
             }
         }.start();
@@ -172,27 +172,13 @@ public class WindowsApp {
                 JOptionPane.showMessageDialog(mainPanel, "Wrong password");
             }
         }
+        if (isAccess) {
+            Application.mainFrame.dispose();
+            Application.startApplication(new AdminApp().getMainPanel());
+        }
     }
 
-    public static void startApplication() {
-        JFrame frame = new JFrame("Diktionary");
-        frame.setContentPane(new WindowsApp().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        frame.pack();
-    }
-
-
-    public static Dictionary dictionary = new Dictionary();
-    public static DictionaryManagement manager = new DictionaryManagement(dictionary);
-    public static apiTranslator apitranslator = new apiTranslator();
-    public static seleTranslator seletranslator = new seleTranslator();
-    public static ttsTranslator ttstranslator = new ttsTranslator();
-
-
-    public static void main(String[] args) {
-        manager.importCsvFile();
-        startApplication();
+    public JPanel getMainPanel() {
+        return this.mainPanel;
     }
 }
