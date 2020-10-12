@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class AdminApp {
     private JPanel mainPanel;
@@ -15,15 +17,16 @@ public class AdminApp {
     private JList wordList;
     private JPanel buttonPanel;
     private JPanel wordPanel;
-    private JPanel wordExplain;
+    private JPanel explainPanel;
+    private JLabel wordLabel;
     private JButton addButton;
     private JButton removeButton;
-    private JLabel explainLabel;
-    private JTextField explainText;
-    private JLabel synonymLabel;
+    private JLabel meaningP;
+    private JTextField meaningText;
+    private JLabel synonymP;
     private JTextField synonymText;
     private JButton normalButton;
-    private JScrollPane explainPanel;
+    private JScrollPane meaningPanel;
     private JScrollPane synonymPanel;
     private JLabel guildText;
     private JPanel bottomPanel;
@@ -31,13 +34,8 @@ public class AdminApp {
     private JPanel completePanel;
     private JButton saveButton;
     private JButton cancelButton;
-    private JPanel targetPanel;
-    private JPanel mainmeanPanel;
-    private JLabel targetLabel;
-    private JTextField mainmeanLabel;
 
     private boolean isEditting = false;
-    private boolean isAdding = false;
 
 
     public AdminApp() {
@@ -55,18 +53,16 @@ public class AdminApp {
         });
         textInput.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-            super.keyPressed(e);
-            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                String word = getTextInput();
-                if (Application.dictionary.word.containsKey(word)) {
-                    selectWord(word);
-                } else {
-                    addWord();
+                super.keyPressed(e);
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    String word = getTextInput();
+                    if (Application.dictionary.word.containsKey(word)) {
+                        selectWord(word);
+                    }
                 }
             }
-            }
         });
-        explainText.getDocument().addDocumentListener(new DocumentListener() {
+        meaningText.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {textChange();}
             public void removeUpdate(DocumentEvent e) {textChange();}
             public void changedUpdate(DocumentEvent e) { }
@@ -79,33 +75,17 @@ public class AdminApp {
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 isEditting = false;
-                isAdding = false;
-                targetLabel.setText("Word");
-                explainText.setText("");
+                wordLabel.setText("Word");
+                meaningText.setText("");
                 synonymText.setText("");
                 completePanel.setVisible(false);
                 removeButton.setVisible(false);
             }
         });
-        addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                addWord();
-            }
-        });
-        explainPanel.getHorizontalScrollBar().setUnitIncrement(20);
+        meaningPanel.getHorizontalScrollBar().setUnitIncrement(20);
         synonymPanel.getHorizontalScrollBar().setUnitIncrement(20);
         changeSearchWord("");
-    }
 
-
-    public void addWord() {
-        targetLabel.setText(textInput.getText());
-        explainText.setText("");
-        synonymText.setText("");
-        completePanel.setVisible(true);
-        addButton.setVisible(false);
-        removeButton.setVisible(false);
-        isAdding = true;
     }
 
     public void textChange() {
@@ -124,12 +104,10 @@ public class AdminApp {
     public void selectWord(String word) {
         isEditting = false;
         addButton.setVisible(false);
-        completePanel.setVisible(false);
-        targetLabel.setText(word);
-        explainText.setText(Application.dictionary.word.get(word).word_explain);
+        wordLabel.setText(word);
+        meaningText.setText(Application.dictionary.word.get(word).word_explain);
         synonymText.setText(Application.dictionary.word.get(word).word_synonyms);
         isEditting = true;
-        isAdding = false;
         removeButton.setVisible(true);
     }
 

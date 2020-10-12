@@ -31,13 +31,9 @@ public class WindowsApp {
     private JButton translateButton;
     private JButton apiButton;
     private JButton seleButton;
-    private JPanel wordPanel;
-    private JPanel targetPanel;
-    private JPanel mainmeanPanel;
     private JButton voiceButton;
     private JButton starButton;
-    private JPanel loadingPanel;
-
+    private JLabel loadingPanel;
 
     private String password = "password";
 
@@ -95,7 +91,7 @@ public class WindowsApp {
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             Image img = toolkit.createImage("image/loading.gif");
             toolkit.prepareImage(img, -1, -1, null);
-            loadingLabel.setIcon(new ImageIcon(img));
+            loadingPanel.setIcon(new ImageIcon(img));
         } catch (Exception e) { }
 
         listPanel.getVerticalScrollBar().setUnitIncrement(20);
@@ -132,11 +128,11 @@ public class WindowsApp {
     public void apiTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingLabel.setVisible(true);
+                loadingPanel.setVisible(true);
                 String result = Application.apitranslator.apiTranslate(word);
                 labelExplain.setText(word);
                 textMeaning.setText(result);
-                loadingLabel.setVisible(false);
+                loadingPanel.setVisible(false);
             }
         }.start();
     }
@@ -144,9 +140,9 @@ public class WindowsApp {
     public void seleTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingLabel.setVisible(true);
+                loadingPanel.setVisible(true);
                 Application.seletranslator.seleTranslate(word);
-                loadingLabel.setVisible(false);
+                loadingPanel.setVisible(false);
             }
         }.start();
     }
@@ -154,9 +150,9 @@ public class WindowsApp {
     public void ttsTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingLabel.setVisible(true);
+                loadingPanel.setVisible(true);
                 Application.ttstranslator.ttsSpeak(word);
-                loadingLabel.setVisible(false);
+                loadingPanel.setVisible(false);
             }
         }.start();
     }
@@ -185,5 +181,4 @@ public class WindowsApp {
     public JPanel getMainPanel() {
         return this.mainPanel;
     }
-
 }
