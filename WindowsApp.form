@@ -49,21 +49,21 @@
             <children>
               <vspacer id="68894">
                 <constraints>
-                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
               </vspacer>
               <tabbedpane id="82c79" binding="tabExplain">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="200" height="200"/>
                   </grid>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
                   <font name="Comic Sans MS" size="20"/>
-                  <minimumSize width="598" height="440"/>
-                  <preferredSize width="598" height="440"/>
+                  <minimumSize width="598" height="390"/>
+                  <preferredSize width="598" height="390"/>
                 </properties>
                 <border type="none"/>
                 <children>
@@ -116,42 +116,74 @@
                   </grid>
                 </children>
               </tabbedpane>
-              <component id="affa" class="javax.swing.JLabel" binding="labelExplain">
+              <grid id="d8d9d" binding="wordPanel" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
-                  <background color="-2634241"/>
-                  <font name="Comic Sans MS" size="26" style="1"/>
-                  <horizontalAlignment value="0"/>
-                  <minimumSize width="518" height="50"/>
-                  <preferredSize width="518" height="50"/>
-                  <text value="Word"/>
+                  <minimumSize width="598" height="100"/>
+                  <preferredSize width="598" height="100"/>
                 </properties>
-              </component>
-              <component id="31a46" class="javax.swing.JButton" binding="voiceButton">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="40" height="40"/>
-                  <preferredSize width="40" height="40"/>
-                  <text value=""/>
-                </properties>
-              </component>
-              <component id="3de64" class="javax.swing.JButton" binding="starButton">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="40" height="40"/>
-                  <preferredSize width="40" height="40"/>
-                  <text value=""/>
-                </properties>
-              </component>
+                <border type="none"/>
+                <children>
+                  <grid id="4f731" binding="targetPanel" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="220" height="100"/>
+                      <preferredSize width="220" height="100"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                  <grid id="fac12" binding="mainmeanPanel" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="240" height="100"/>
+                      <preferredSize width="240" height="100"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                  <component id="a90fd" class="javax.swing.JButton" binding="voiceButton">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="50" height="50"/>
+                      <preferredSize width="50" height="50"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="23d3d" class="javax.swing.JButton" binding="starButton">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="50" height="50"/>
+                      <preferredSize width="50" height="50"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <grid id="c8e1b" binding="loajavax.swing.JPanelmanager="GridBagLayout">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </grid>
             </children>
           </grid>
           <scrollpane id="1b7dd" binding="listPanel">
@@ -177,7 +209,7 @@
       </grid>
       <grid id="56634" binding="buttonPanel" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -238,18 +270,6 @@
           </component>
         </children>
       </scrollpane>
-      <component id="642c2" class="javax.swing.JLabel" binding="loadingPanel">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <minimumSize width="50" height="50"/>
-          <preferredSize width="50" height="50"/>
-          <text value=""/>
-          <visible value="false"/>
-        </properties>
-      </component>
     </children>
   </grid>
 </form>

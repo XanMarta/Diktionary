@@ -189,4 +189,8 @@ public class DictionaryManagement {
         }
     }
 
+    public void dictionaryAddWord(String word) {
+
+    }
+
 }
