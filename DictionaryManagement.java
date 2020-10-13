@@ -176,9 +176,9 @@ public class DictionaryManagement {
         return Application.dictionary.word.prefixMap(word).keySet();
     }
 
-    public void importCsvFile() {
+    public void importDatabaseFile() {
         try {
-            Scanner scan = new Scanner(new File("dictionaries.csv"));
+            Scanner scan = new Scanner(new File("dictionaries.txt"));
             while (scan.hasNextLine()) {
                 String[] word = scan.nextLine().split(",");
                 Application.dictionary.addWord(word[0].toLowerCase(), "(" + word[1] + ") " + word[2], "", "");

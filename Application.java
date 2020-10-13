@@ -34,7 +34,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-        manager.importCsvFile();
+        manager.importDatabaseFile();
         startApplication(true);
     }
 
