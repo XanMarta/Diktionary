@@ -66,14 +66,14 @@ public class DictionaryManagement {
         for (int i = 1; i <= 15; i++) {
             System.out.print(" ");
         }
-        System.out.println("|  Antonyms");
+        System.out.println("|  Mainmean");
         // Print content
         int count = 1;
         for (String target : Application.dictionary.word.keySet()) {
             String no = count++ + "";
             String explain = Application.dictionary.word.get(target).word_explain;
             String synonyms = Application.dictionary.word.get(target).word_synonyms;
-            String antonyms = Application.dictionary.word.get(target).word_antonyms;
+            String mainmean = Application.dictionary.word.get(target).word_mainmean;
 
             System.out.print(no);
             for (int j = 1; j <= noSpace - no.length(); j++) {
@@ -91,7 +91,7 @@ public class DictionaryManagement {
             for (int j = 1; j <= synonymSpace - synonyms.length(); j++) { //getSpace - explain.length()
                 System.out.print(" ");
             }
-            System.out.println("|" + antonyms);
+            System.out.println("|" + mainmean);
         }
         System.out.println();
     }
@@ -103,9 +103,9 @@ public class DictionaryManagement {
 
         if (Application.dictionary.word.containsKey(target)) {
             Word word = Application.dictionary.word.get(target);
-            System.out.println("Meaning: " + word.word_explain);
+            System.out.println("Mainmean: " + word.word_mainmean);
+            System.out.println("Explain: " + word.word_explain);
             System.out.println("Synonyms: " + word.word_synonyms);
-            System.out.println("Antonyms: " + word.word_antonyms);
         } else {
             System.out.println("Your word is not in dictionary yet");
         }
@@ -127,15 +127,15 @@ public class DictionaryManagement {
             System.out.print("Input y to continue to change the meaning: ");
             String temp = ConsoleC.scan.nextLine();
             if (temp.equals("y") || temp.equals("Y")) {
+                System.out.print("Input word mainmean: ");
+                String mainmean = ConsoleC.scan.nextLine();
                 System.out.print("Input word explain: ");
                 String explain = ConsoleC.scan.nextLine();
                 System.out.print("Input word synonym: ");
                 String synonym = ConsoleC.scan.nextLine();
-                System.out.print("Input word antonym: ");
-                String antonym = ConsoleC.scan.nextLine();
+                Application.dictionary.word.get(target).word_mainmean = mainmean;
                 Application.dictionary.word.get(target).word_explain = explain;
                 Application.dictionary.word.get(target).word_synonyms = synonym;
-                Application.dictionary.word.get(target).word_antonyms = antonym;
             }
         } else {
             System.out.print("Input word explain: ");
@@ -161,8 +161,8 @@ public class DictionaryManagement {
             for (String target : Application.dictionary.word.keySet()) {
                 writer.write(target + " | "
                         + Application.dictionary.word.get(target).word_explain
-                        + " | " + Application.dictionary.word.get(target).word_synonyms
-                        + " | " + Application.dictionary.word.get(target).word_antonyms + "\n");
+                        + " | " + Application.dictionary.word.get(target).word_mainmean
+                        + " | " + Application.dictionary.word.get(target).word_synonyms + "\n");
             }
             writer.close();
             System.out.println("    -- Writing completed --");
@@ -180,8 +180,8 @@ public class DictionaryManagement {
         try {
             Scanner scan = new Scanner(new File("dictionaries.txt"));
             while (scan.hasNextLine()) {
-                String[] word = scan.nextLine().split(",");
-                Application.dictionary.addWord(word[0].toLowerCase(), "(" + word[1] + ") " + word[2], "", "");
+                String[] word = scan.nextLine().split("\\|");
+                Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
             }
             scan.close();
         } catch (FileNotFoundException e) {
