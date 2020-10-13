@@ -41,7 +41,7 @@
             <properties>
               <minimumSize width="78" height="50"/>
               <preferredSize width="78" height="50"/>
-              <text value="A"/>
+              <text value=""/>
               <visible value="false"/>
             </properties>
           </component>
@@ -50,7 +50,7 @@
             <properties>
               <minimumSize width="78" height="50"/>
               <preferredSize width="78" height="50"/>
-              <text value="R"/>
+              <text value=""/>
               <visible value="false"/>
             </properties>
           </component>

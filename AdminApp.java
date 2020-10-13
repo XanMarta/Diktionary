@@ -1,12 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class AdminApp {
     private JPanel mainPanel;
@@ -127,6 +130,14 @@ public class AdminApp {
                 }
             }
         });
+        try {
+            Image img = ImageIO.read(getClass().getResource("image/add.png"));
+            addButton.setIcon(new ImageIcon(img));
+        } catch (IOException e) { }
+        try {
+            Image img = ImageIO.read(getClass().getResource("image/remove.png"));
+            removeButton.setIcon(new ImageIcon(img));
+        } catch (IOException e) { }
         explainPanel.getHorizontalScrollBar().setUnitIncrement(20);
         synonymPanel.getHorizontalScrollBar().setUnitIncrement(20);
         changeSearchWord("");
@@ -149,6 +160,7 @@ public class AdminApp {
 
     public void addWord() {
         targetLabel.setText(textInput.getText());
+        mainmeanText.setText("");
         explainText.setText("");
         synonymText.setText("");
         completePanel.setVisible(true);
@@ -179,8 +191,10 @@ public class AdminApp {
         addButton.setVisible(false);
         completePanel.setVisible(false);
         targetLabel.setText(word);
-        explainText.setText(Application.dictionary.word.get(word).word_explain);
-        synonymText.setText(Application.dictionary.word.get(word).word_synonyms);
+        Word target = Application.dictionary.word.get(word);
+        mainmeanText.setText(target.word_mainmean);
+        explainText.setText(target.word_explain);
+        synonymText.setText(target.word_synonyms);
         isEditting = true;
         isAdding = false;
         removeButton.setVisible(true);
