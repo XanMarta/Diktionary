@@ -157,7 +157,9 @@
             <children>
               <component id="25bf3" class="javax.swing.JTextField" binding="explainText">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <font name="Comic Sans MS" size="18"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
@@ -174,7 +176,9 @@
             <children>
               <component id="ec413" class="javax.swing.JTextField" binding="synonymText">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <font name="Comic Sans MS" size="18"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
@@ -253,7 +257,9 @@
         <children>
           <component id="1cd20" class="javax.swing.JList" binding="wordList">
             <constraints/>
-            <properties/>
+            <properties>
+              <font name="Comic Sans MS" size="12"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

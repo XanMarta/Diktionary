@@ -187,7 +187,7 @@ public class DictionaryManagement {
             }
             scan.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("File not found: dictionaries.txt");
         }
     }
 
@@ -206,7 +206,11 @@ public class DictionaryManagement {
             }
             scan.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            try {
+                new File("changes.txt").createNewFile();
+            } catch (IOException ef) {
+                System.out.println("File not found and cannot create");
+            }
         }
     }
 
