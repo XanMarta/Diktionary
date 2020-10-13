@@ -34,7 +34,7 @@ public class AdminApp {
     private JPanel targetPanel;
     private JPanel mainmeanPanel;
     private JLabel targetLabel;
-    private JTextField mainmeanLabel;
+    private JTextField mainmeanText;
 
     private boolean isEditting = false;
     private boolean isAdding = false;
@@ -80,9 +80,7 @@ public class AdminApp {
             public void actionPerformed(ActionEvent e) {
                 isEditting = false;
                 isAdding = false;
-                targetLabel.setText("Word");
-                explainText.setText("");
-                synonymText.setText("");
+                clearWordExplain();
                 completePanel.setVisible(false);
                 removeButton.setVisible(false);
             }
@@ -101,12 +99,48 @@ public class AdminApp {
                 }
             }
         });
+        removeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String word = targetLabel.getText();
+                int result = JOptionPane.showConfirmDialog(mainPanel,
+                        "Do you want to remove the word '" + word + "' ?",
+                        "REMOVE", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    Application.manager.dictionaryDeleteWord(word);
+                    removeButton.setVisible(false);
+                    clearWordExplain();
+                }
+            }
+        });
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String word = targetLabel.getText();
+                String temp = isAdding ? "add" : "change";
+                int result = JOptionPane.showConfirmDialog(mainPanel,
+                        "Do you want to " + temp + " the word '" + word + "' ?",
+                        temp.toUpperCase(), JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    Application.manager.dictionaryAddWord(word, mainmeanText.getText(),
+                            explainText.getText(), synonymText.getText());
+                    completePanel.setVisible(false);
+                    isAdding = false;
+                }
+            }
+        });
         explainPanel.getHorizontalScrollBar().setUnitIncrement(20);
         synonymPanel.getHorizontalScrollBar().setUnitIncrement(20);
         changeSearchWord("");
 
     }
 
+
+    public void clearWordExplain(){
+        targetLabel.setText("Word");
+        mainmeanText.setText("");
+        explainText.setText("");
+        synonymText.setText("");
+        completePanel.setVisible(false);
+    }
 
     public void returnNormalMode() {
         Application.mainFrame.dispose();
@@ -133,7 +167,11 @@ public class AdminApp {
         DefaultListModel<String> model = new DefaultListModel<>();
         model.addAll(Application.manager.getWordHint(word));
         wordList.setModel(model);
-        addButton.setVisible(!Application.dictionary.word.containsKey(word));
+        if (word.equals("") || Application.dictionary.word.containsKey(word)) {
+            addButton.setVisible(false);
+        } else {
+            addButton.setVisible(true);
+        }
     }
 
     public void selectWord(String word) {

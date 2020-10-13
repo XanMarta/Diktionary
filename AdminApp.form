@@ -42,7 +42,7 @@
               <minimumSize width="78" height="50"/>
               <preferredSize width="78" height="50"/>
               <text value="A"/>
-              <visible value="true"/>
+              <visible value="false"/>
             </properties>
           </component>
           <component id="faf96" class="javax.swing.JButton" binding="removeButton" default-binding="true">
@@ -51,7 +51,7 @@
               <minimumSize width="78" height="50"/>
               <preferredSize width="78" height="50"/>
               <text value="R"/>
-              <visible value="true"/>
+              <visible value="false"/>
             </properties>
           </component>
         </children>
@@ -95,7 +95,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="5f71c" class="javax.swing.JTextField" binding="mainmeanLabel">
+              <component id="5f71c" class="javax.swing.JTextField" binding="mainmeanText">
                 <constraints border-constraint="Center"/>
                 <properties>
                   <font name="Comic Sans MS" size="16"/>

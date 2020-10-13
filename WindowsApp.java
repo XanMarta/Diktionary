@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Set;
 
 
 public class WindowsApp {
@@ -37,6 +38,7 @@ public class WindowsApp {
     private JPanel targetPanel;
     private JPanel mainmeanPanel;
     private JLabel mainmeanLabel;
+    private JButton adminButton;
 
     private String password = "password";
 
@@ -81,7 +83,7 @@ public class WindowsApp {
                 ttsTranslate(targetLabel.getText());
             }
         });
-        starButton.addActionListener(new ActionListener() {
+        adminButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 adminAccess();
             }
@@ -113,15 +115,18 @@ public class WindowsApp {
 
     public void changeSearchWord(String word) {
         DefaultListModel<String> model = new DefaultListModel<>();
-        model.addAll(Application.manager.getWordHint(word));
+        Set<String> wordHint = Application.manager.getWordHint(word);
+        model.addAll(wordHint);
         wordList.setModel(model);
     }
 
     public void translateWord(String word) {
         targetLabel.setText(word);
+        tabExplain.setSelectedIndex(0);
         if (Application.dictionary.word.containsKey(word)) {
             textExplain.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_explain, 768));
             textSynonym.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_synonyms, 768));
+            mainmeanLabel.setText(Application.dictionary.word.get(word).word_mainmean);
         } else {
             textExplain.setText("There no word \"" + word + "\" in diktionary");
             textSynonym.setText("There no word \"" + word + "\" in diktionary");

@@ -181,7 +181,9 @@ public class DictionaryManagement {
             Scanner scan = new Scanner(new File("dictionaries.txt"));
             while (scan.hasNextLine()) {
                 String[] word = scan.nextLine().split("\\|");
-                Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
+                if (!word[0].equals("")) {
+                    Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
+                }
             }
             scan.close();
         } catch (FileNotFoundException e) {
@@ -189,4 +191,44 @@ public class DictionaryManagement {
         }
     }
 
+    public void importChangeFile() {
+        try {
+            Scanner scan = new Scanner(new File("changes.txt"));
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                String content = line.substring(1);
+                if (line.startsWith("+")) {
+                    String[] word = content.split("\\|");
+                    Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
+                } else {
+                    Application.dictionary.word.remove(content);
+                }
+            }
+            scan.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+    }
+
+    public void dictionaryAddWord(String word, String mainmean, String explain, String synonym) {
+        Application.dictionary.addWord(word, mainmean, explain, synonym);
+        try {
+            FileWriter writer = new FileWriter("changes.txt", true);
+            writer.write("+" + word + "|" + mainmean + "|" + explain + "|" + synonym + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Cannot write to file");
+        }
+    }
+
+    public void dictionaryDeleteWord(String word) {
+        Application.dictionary.word.remove(word);
+        try {
+            FileWriter writer = new FileWriter("changes.txt", true);
+            writer.write("-" + word + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Cannot write to file");
+        }
+    }
 }

@@ -35,6 +35,7 @@ public class Application {
 
     public static void main(String[] args) {
         manager.importDatabaseFile();
+        manager.importChangeFile();
         startApplication(true);
     }
 
