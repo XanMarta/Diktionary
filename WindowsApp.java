@@ -15,25 +15,28 @@ public class WindowsApp {
     private JPanel mainPanel;
     private JPanel bodyPanel;
     private JPanel explainPanel;
-    private JLabel labelExplain;
+    private JLabel targetLabel;
     private JTabbedPane tabExplain;
-    private JPanel meaningTab;
+    private JPanel explainTab;
     private JPanel synonymTab;
     private JPanel imageTab;
     private JPanel buttonPanel;
     private JScrollPane listPanel;
     private JList wordList;
-    private JScrollPane scrollMeaning;
+    private JScrollPane scrollExplain;
     private JTextField textInput;
     private JScrollPane textPanel;
-    private JLabel textMeaning;
+    private JLabel textExplain;
     private JLabel textSynonym;
     private JButton translateButton;
     private JButton apiButton;
     private JButton seleButton;
     private JButton voiceButton;
     private JButton starButton;
-    private JLabel loadingPanel;
+    private JLabel loadingLabel;
+    private JPanel targetPanel;
+    private JPanel mainmeanPanel;
+    private JLabel mainmeanLabel;
 
     private String password = "password";
 
@@ -75,7 +78,7 @@ public class WindowsApp {
         });
         voiceButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ttsTranslate(labelExplain.getText());
+                ttsTranslate(targetLabel.getText());
             }
         });
         starButton.addActionListener(new ActionListener() {
@@ -91,13 +94,13 @@ public class WindowsApp {
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             Image img = toolkit.createImage("image/loading.gif");
             toolkit.prepareImage(img, -1, -1, null);
-            loadingPanel.setIcon(new ImageIcon(img));
+            loadingLabel.setIcon(new ImageIcon(img));
         } catch (Exception e) { }
 
         listPanel.getVerticalScrollBar().setUnitIncrement(20);
         listPanel.getHorizontalScrollBar().setUnitIncrement(20);
-        scrollMeaning.getVerticalScrollBar().setUnitIncrement(20);
-        scrollMeaning.getHorizontalScrollBar().setUnitIncrement(20);
+        scrollExplain.getVerticalScrollBar().setUnitIncrement(20);
+        scrollExplain.getHorizontalScrollBar().setUnitIncrement(20);
 
         changeSearchWord("");
 
@@ -115,12 +118,12 @@ public class WindowsApp {
     }
 
     public void translateWord(String word) {
-        labelExplain.setText(word);
+        targetLabel.setText(word);
         if (Application.dictionary.word.containsKey(word)) {
-            textMeaning.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_explain, 768));
+            textExplain.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_explain, 768));
             textSynonym.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_synonyms, 768));
         } else {
-            textMeaning.setText("There no word \"" + word + "\" in diktionary");
+            textExplain.setText("There no word \"" + word + "\" in diktionary");
             textSynonym.setText("There no word \"" + word + "\" in diktionary");
         }
     }
@@ -128,11 +131,11 @@ public class WindowsApp {
     public void apiTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingPanel.setVisible(true);
+                loadingLabel.setVisible(true);
                 String result = Application.apitranslator.apiTranslate(word);
-                labelExplain.setText(word);
-                textMeaning.setText(result);
-                loadingPanel.setVisible(false);
+                targetLabel.setText(word);
+                textExplain.setText(result);
+                loadingLabel.setVisible(false);
             }
         }.start();
     }
@@ -140,9 +143,9 @@ public class WindowsApp {
     public void seleTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingPanel.setVisible(true);
+                loadingLabel.setVisible(true);
                 Application.seletranslator.seleTranslate(word);
-                loadingPanel.setVisible(false);
+                loadingLabel.setVisible(false);
             }
         }.start();
     }
@@ -150,9 +153,9 @@ public class WindowsApp {
     public void ttsTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingPanel.setVisible(true);
+                loadingLabel.setVisible(true);
                 Application.ttstranslator.ttsSpeak(word);
-                loadingPanel.setVisible(false);
+                loadingLabel.setVisible(false);
             }
         }.start();
     }
@@ -174,7 +177,7 @@ public class WindowsApp {
         }
         if (isAccess) {
             Application.mainFrame.dispose();
-            Application.startApplication(new AdminApp().getMainPanel(), "Admin Mode");
+            Application.startApplication(false);
         }
     }
 
