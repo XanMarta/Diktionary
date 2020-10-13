@@ -9,31 +9,38 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Set;
 
 
 public class WindowsApp {
     private JPanel mainPanel;
     private JPanel bodyPanel;
     private JPanel explainPanel;
-    private JLabel labelExplain;
+    private JLabel targetLabel;
     private JTabbedPane tabExplain;
-    private JPanel meaningTab;
+    private JPanel explainTab;
     private JPanel synonymTab;
     private JPanel imageTab;
     private JPanel buttonPanel;
     private JScrollPane listPanel;
     private JList wordList;
-    private JScrollPane scrollMeaning;
+    private JScrollPane scrollExplain;
     private JTextField textInput;
     private JScrollPane textPanel;
-    private JLabel textMeaning;
+    private JLabel textExplain;
     private JLabel textSynonym;
     private JButton translateButton;
     private JButton apiButton;
     private JButton seleButton;
     private JButton voiceButton;
     private JButton starButton;
-    private JLabel loadingPanel;
+    private JLabel loadingLabel;
+    private JPanel targetPanel;
+    private JPanel mainmeanPanel;
+    private JLabel mainmeanLabel;
+    private JButton adminButton;
+
+    private String password = "password";
 
     public WindowsApp() {
         textInput.getDocument().addDocumentListener(new DocumentListener() {
@@ -73,7 +80,12 @@ public class WindowsApp {
         });
         voiceButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ttsTranslate(labelExplain.getText());
+                ttsTranslate(targetLabel.getText());
+            }
+        });
+        adminButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                adminAccess();
             }
         });
         try {
@@ -84,15 +96,16 @@ public class WindowsApp {
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             Image img = toolkit.createImage("image/loading.gif");
             toolkit.prepareImage(img, -1, -1, null);
-            loadingPanel.setIcon(new ImageIcon(img));
+            loadingLabel.setIcon(new ImageIcon(img));
         } catch (Exception e) { }
 
         listPanel.getVerticalScrollBar().setUnitIncrement(20);
         listPanel.getHorizontalScrollBar().setUnitIncrement(20);
-        scrollMeaning.getVerticalScrollBar().setUnitIncrement(20);
-        scrollMeaning.getHorizontalScrollBar().setUnitIncrement(20);
+        scrollExplain.getVerticalScrollBar().setUnitIncrement(20);
+        scrollExplain.getHorizontalScrollBar().setUnitIncrement(20);
 
         changeSearchWord("");
+
     }
 
 
@@ -102,17 +115,20 @@ public class WindowsApp {
 
     public void changeSearchWord(String word) {
         DefaultListModel<String> model = new DefaultListModel<>();
-        model.addAll(manager.getWordHint(word));
+        Set<String> wordHint = Application.manager.getWordHint(word);
+        model.addAll(wordHint);
         wordList.setModel(model);
     }
 
     public void translateWord(String word) {
-        labelExplain.setText(word);
-        if (dictionary.word.containsKey(word)) {
-            textMeaning.setText(ConsoleC.textToHtml(dictionary.word.get(word).word_explain, 768));
-            textSynonym.setText(ConsoleC.textToHtml(dictionary.word.get(word).word_synonyms, 768));
+        targetLabel.setText(word);
+        tabExplain.setSelectedIndex(0);
+        if (Application.dictionary.word.containsKey(word)) {
+            textExplain.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_explain, 768));
+            textSynonym.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_synonyms, 768));
+            mainmeanLabel.setText(Application.dictionary.word.get(word).word_mainmean);
         } else {
-            textMeaning.setText("There no word \"" + word + "\" in diktionary");
+            textExplain.setText("There no word \"" + word + "\" in diktionary");
             textSynonym.setText("There no word \"" + word + "\" in diktionary");
         }
     }
@@ -120,11 +136,11 @@ public class WindowsApp {
     public void apiTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingPanel.setVisible(true);
-                String result = apitranslator.apiTranslate(word);
-                labelExplain.setText(word);
-                textMeaning.setText(result);
-                loadingPanel.setVisible(false);
+                loadingLabel.setVisible(true);
+                String result = Application.apitranslator.apiTranslate(word);
+                targetLabel.setText(word);
+                textExplain.setText(result);
+                loadingLabel.setVisible(false);
             }
         }.start();
     }
@@ -132,9 +148,9 @@ public class WindowsApp {
     public void seleTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingPanel.setVisible(true);
-                seletranslator.seleTranslate(word);
-                loadingPanel.setVisible(false);
+                loadingLabel.setVisible(true);
+                Application.seletranslator.seleTranslate(word);
+                loadingLabel.setVisible(false);
             }
         }.start();
     }
@@ -142,32 +158,35 @@ public class WindowsApp {
     public void ttsTranslate(String word) {
         new Thread() {
             public void run() {
-                loadingPanel.setVisible(true);
-                ttstranslator.ttsSpeak(word);
-                loadingPanel.setVisible(false);
+                loadingLabel.setVisible(true);
+                Application.ttstranslator.ttsSpeak(word);
+                loadingLabel.setVisible(false);
             }
         }.start();
     }
 
-    public static void startApplication() {
-        JFrame frame = new JFrame("Diktionary");
-        frame.setContentPane(new WindowsApp().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        frame.pack();
+    public void adminAccess() {
+        boolean isAccess = false;
+        while (true) {
+            String input = JOptionPane.showInputDialog(mainPanel, "Type password to enter Admin Mode");
+            if (input == null) {
+                break;
+            }
+            if (input.equals(password)) {
+                JOptionPane.showMessageDialog(mainPanel, "You're on!");
+                isAccess = true;
+                break;
+            } else {
+                JOptionPane.showMessageDialog(mainPanel, "Wrong password");
+            }
+        }
+        if (isAccess) {
+            Application.mainFrame.dispose();
+            Application.startApplication(false);
+        }
     }
 
-
-    public static Dictionary dictionary = new Dictionary();
-    public static DictionaryManagement manager = new DictionaryManagement(dictionary);
-    public static apiTranslator apitranslator = new apiTranslator();
-    public static seleTranslator seletranslator = new seleTranslator();
-    public static ttsTranslator ttstranslator = new ttsTranslator();
-
-
-    public static void main(String[] args) {
-        manager.importCsvFile();
-        startApplication();
+    public JPanel getMainPanel() {
+        return this.mainPanel;
     }
 }
