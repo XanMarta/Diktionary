@@ -37,15 +37,8 @@ public class WindowsApp {
     private JPanel mainmeanPanel;
     private JLabel mainmeanLabel;
     private JButton adminButton;
-    private JLabel i1;
-    private JLabel i2;
-    private JLabel i3;
-    private JLabel i4;
-    private JLabel i5;
-    private JLabel i6;
-    private JLabel i7;
-    private JLabel i8;
-    private JLabel i9;
+    private JPanel imageT;
+    private JLabel imageCenter;
 
     private String password = "password";
     private boolean isShowingImage = false;
@@ -108,10 +101,14 @@ public class WindowsApp {
         } catch (Exception e) { }
         tabExplain.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                if (Application.imageScrapter.isReady && tabExplain.getSelectedIndex() == 2) {
-                    if (!isShowingImage) {
-                        imageScrapt(targetLabel.getText());
-                        isShowingImage = true;
+                if (tabExplain.getSelectedIndex() == 2) {
+                    if (Application.imageScrapter.isReady) {
+                        if (!isShowingImage) {
+                            imageScrapt(targetLabel.getText());
+                            isShowingImage = true;
+                        }
+                    } else {
+                        imageCenter.setText("Initing ..");
                     }
                 }
             }
@@ -194,12 +191,16 @@ public class WindowsApp {
         }
         thread = new Thread() {
             public void run() {
-                Component[] components = imageTab.getComponents();
+                imageCenter.setText("Loading ..");
+                loadingLabel.setVisible(true);
+                Component[] components = imageT.getComponents();
                 for (Component component : components) {
                     ((JLabel)component).setIcon(null);
                 }
                 BufferedImage[] image = Application.imageScrapter.getImage(word, 9);
                 int componentCount = 1;
+                imageCenter.setText("");
+                loadingLabel.setVisible(false);
                 for (Component component : components) {
                     try {
                         JLabel label = (JLabel)component;

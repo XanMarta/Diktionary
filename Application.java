@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Application {
 
@@ -32,6 +34,20 @@ public class Application {
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
+        mainFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.out.println("Close driver");
+                imageScrapter.driver.quit();
+                super.windowClosing(e);
+            }
+        });
+    }
+
+    public void finalize() {
+        if (imageScrapter.driver != null) {
+            imageScrapter.driver.close();
+            imageScrapter.driver = null;
+        }
     }
 
 
