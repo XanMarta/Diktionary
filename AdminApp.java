@@ -122,8 +122,10 @@ public class AdminApp {
                         "Do you want to " + temp + " the word '" + word + "' ?",
                         temp.toUpperCase(), JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
-                    Application.manager.dictionaryAddWord(word.toLowerCase(), mainmeanText.getText(),
-                            explainText.getText(), synonymText.getText());
+                    Application.manager.dictionaryAddWord(word.toLowerCase(),
+                            ConsoleC.toUTF8(mainmeanText.getText()),
+                            ConsoleC.toUTF8(explainText.getText()),
+                            ConsoleC.toUTF8(synonymText.getText()));
                     completePanel.setVisible(false);
                     isAdding = false;
                 }
