@@ -106,7 +106,107 @@
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="f7aef" class="javax.swing.JLabel" binding="i1">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="fbb07" class="javax.swing.JLabel" binding="i2">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="dc23e" class="javax.swing.JLabel" binding="i3">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="44d82" class="javax.swing.JLabel" binding="i4">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="868b8" class="javax.swing.JLabel" binding="i5">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="a4c25" class="javax.swing.JLabel" binding="i6">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="3dfcc" class="javax.swing.JLabel" binding="i7">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="c1e40" class="javax.swing.JLabel" binding="i8">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="c250" class="javax.swing.JLabel" binding="i9">
+                        <constraints>
+                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <minimumSize width="180" height="110"/>
+                          <preferredSize width="180" height="110"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                    </children>
                   </grid>
                 </children>
               </tabbedpane>

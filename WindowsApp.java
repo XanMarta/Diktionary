@@ -1,14 +1,12 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.Set;
 
 
@@ -39,8 +37,18 @@ public class WindowsApp {
     private JPanel mainmeanPanel;
     private JLabel mainmeanLabel;
     private JButton adminButton;
+    private JLabel i1;
+    private JLabel i2;
+    private JLabel i3;
+    private JLabel i4;
+    private JLabel i5;
+    private JLabel i6;
+    private JLabel i7;
+    private JLabel i8;
+    private JLabel i9;
 
     private String password = "password";
+    private boolean isShowingImage = false;
 
     public WindowsApp() {
         textInput.getDocument().addDocumentListener(new DocumentListener() {
@@ -98,6 +106,16 @@ public class WindowsApp {
             toolkit.prepareImage(img, -1, -1, null);
             loadingLabel.setIcon(new ImageIcon(img));
         } catch (Exception e) { }
+        tabExplain.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                if (Application.imageScrapter.isReady && tabExplain.getSelectedIndex() == 2) {
+                    if (!isShowingImage) {
+                        imageScrapt(targetLabel.getText());
+                        isShowingImage = true;
+                    }
+                }
+            }
+        });
 
         listPanel.getVerticalScrollBar().setUnitIncrement(20);
         listPanel.getHorizontalScrollBar().setUnitIncrement(20);
@@ -121,17 +139,19 @@ public class WindowsApp {
     }
 
     public void translateWord(String word) {
-        targetLabel.setText(word);
-        tabExplain.setSelectedIndex(0);
-        if (Application.dictionary.word.containsKey(word)) {
-            Word target = Application.dictionary.word.get(word);
-            mainmeanLabel.setText(target.word_mainmean);
-            textExplain.setText(ConsoleC.textToHtml(target.word_explain, 768));
-            textSynonym.setText(ConsoleC.textToHtml(target.word_synonyms, 768));
-            System.out.println("Translate: " + target.word_mainmean + " " + target.word_explain + " " + target.word_synonyms);
-        } else {
-            textExplain.setText("There no word \"" + word + "\" in diktionary");
-            textSynonym.setText("There no word \"" + word + "\" in diktionary");
+        if (!targetLabel.getText().equals(word)) {
+            targetLabel.setText(word);
+            tabExplain.setSelectedIndex(0);
+            if (Application.dictionary.word.containsKey(word)) {
+                Word target = Application.dictionary.word.get(word);
+                mainmeanLabel.setText(target.word_mainmean);
+                textExplain.setText(ConsoleC.textToHtml(target.word_explain, 768));
+                textSynonym.setText(ConsoleC.textToHtml(target.word_synonyms, 768));
+                isShowingImage = false;
+            } else {
+                textExplain.setText("There no word \"" + word + "\" in diktionary");
+                textSynonym.setText("There no word \"" + word + "\" in diktionary");
+            }
         }
     }
 
@@ -165,6 +185,31 @@ public class WindowsApp {
                 loadingLabel.setVisible(false);
             }
         }.start();
+    }
+
+    public void imageScrapt(String word) {
+        Thread thread = Application.imageThread;
+        if (thread != null) {
+            thread.interrupt();
+        }
+        thread = new Thread() {
+            public void run() {
+                Component[] components = imageTab.getComponents();
+                for (Component component : components) {
+                    ((JLabel)component).setIcon(null);
+                }
+                BufferedImage[] image = Application.imageScrapter.getImage(word, 9);
+                int componentCount = 1;
+                for (Component component : components) {
+                    try {
+                        JLabel label = (JLabel)component;
+                        label.setIcon(new ImageIcon(image[componentCount]));
+                        componentCount += 1;
+                    } catch (Exception e) { }
+                }
+            }
+        };
+        thread.start();
     }
 
     public void adminAccess() {

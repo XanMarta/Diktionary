@@ -7,10 +7,12 @@ public class Application {
     public static apiTranslator apitranslator = new apiTranslator();
     public static seleTranslator seletranslator = new seleTranslator();
     public static ttsTranslator ttstranslator = new ttsTranslator();
+    public static ImageScrapter imageScrapter = new ImageScrapter();
 
     public static JFrame mainFrame;
     public static WindowsApp windowsApp = new WindowsApp();
     public static AdminApp adminApp = new AdminApp();
+    public static Thread imageThread = null;
 
 
     public static void startApplication(boolean isWindows) {
@@ -37,6 +39,7 @@ public class Application {
         manager.importDatabaseFile();
         manager.importChangeFile();
         startApplication(true);
+        imageScrapter.initScrapter();
     }
 
 }
