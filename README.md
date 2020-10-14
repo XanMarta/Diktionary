@@ -4,7 +4,7 @@
  
 ![Libraries](libraries.PNG)
 
- * **Link for full necessary files:**
+ * **Link for full necessary files: (include full 460k lines database 'dictionaries.txt')**
 
 https://drive.google.com/drive/folders/1i7Sy8soi6LbDlZd364JKfQyUWfQrSpaS?usp=sharing
 
