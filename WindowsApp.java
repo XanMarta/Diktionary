@@ -124,9 +124,11 @@ public class WindowsApp {
         targetLabel.setText(word);
         tabExplain.setSelectedIndex(0);
         if (Application.dictionary.word.containsKey(word)) {
-            textExplain.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_explain, 768));
-            textSynonym.setText(ConsoleC.textToHtml(Application.dictionary.word.get(word).word_synonyms, 768));
-            mainmeanLabel.setText(Application.dictionary.word.get(word).word_mainmean);
+            Word target = Application.dictionary.word.get(word);
+            mainmeanLabel.setText(target.word_mainmean);
+            textExplain.setText(ConsoleC.textToHtml(target.word_explain, 768));
+            textSynonym.setText(ConsoleC.textToHtml(target.word_synonyms, 768));
+            System.out.println("Translate: " + target.word_mainmean + " " + target.word_explain + " " + target.word_synonyms);
         } else {
             textExplain.setText("There no word \"" + word + "\" in diktionary");
             textSynonym.setText("There no word \"" + word + "\" in diktionary");

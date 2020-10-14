@@ -76,7 +76,7 @@
                           <component id="75611" class="javax.swing.JLabel" binding="textExplain">
                             <constraints/>
                             <properties>
-                              <font name="Comic Sans MS" size="16"/>
+                              <font name="Droid Sans" size="16"/>
                               <text value="This is meaning"/>
                             </properties>
                           </component>
@@ -149,7 +149,7 @@
                   <component id="a9248" class="javax.swing.JLabel" binding="mainmeanLabel">
                     <constraints border-constraint="Center"/>
                     <properties>
-                      <font name="Comic Sans MS" size="22"/>
+                      <font name="Droid Sans" size="18"/>
                       <horizontalAlignment value="0"/>
                       <text value="Meaning"/>
                     </properties>

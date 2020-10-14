@@ -42,7 +42,6 @@ public class AdminApp {
     private boolean isEditting = false;
     private boolean isAdding = false;
 
-
     public AdminApp() {
         textInput.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {changeSearchWord(getTextInput());}
@@ -123,7 +122,7 @@ public class AdminApp {
                         "Do you want to " + temp + " the word '" + word + "' ?",
                         temp.toUpperCase(), JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
-                    Application.manager.dictionaryAddWord(word, mainmeanText.getText(),
+                    Application.manager.dictionaryAddWord(word.toLowerCase(), mainmeanText.getText(),
                             explainText.getText(), synonymText.getText());
                     completePanel.setVisible(false);
                     isAdding = false;

@@ -182,7 +182,11 @@ public class DictionaryManagement {
             while (scan.hasNextLine()) {
                 String[] word = scan.nextLine().split("\\|");
                 if (!word[0].equals("")) {
-                    Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
+                    Application.dictionary.addWord(
+                            ConsoleC.toUTF8(word[0]),
+                            ConsoleC.toUTF8(word[1]),
+                            ConsoleC.toUTF8(word[2]),
+                            ConsoleC.toUTF8(word[3]));
                 }
             }
             scan.close();
