@@ -200,12 +200,14 @@ public class DictionaryManagement {
             Scanner scan = new Scanner(new File("changes.txt"));
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
-                String content = line.substring(1);
-                if (line.startsWith("+")) {
-                    String[] word = content.split("\\|");
-                    Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
-                } else {
-                    Application.dictionary.word.remove(content);
+                if (line.length() >= 1) {
+                    String content = line.substring(1);
+                    if (line.startsWith("+")) {
+                        String[] word = content.split("\\|");
+                        Application.dictionary.addWord(word[0], word[1], word[2], word[3]);
+                    } else {
+                        Application.dictionary.word.remove(content);
+                    }
                 }
             }
             scan.close();
